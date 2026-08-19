@@ -178,6 +178,9 @@ augroup InitFileTypesGroup
 	au BufNewFile,BufRead *.asc setlocal filetype=asciidoc
 	au BufNewFile,BufRead *.vl setlocal filetype=verilog
 
+	" 退出插入模式时自动保存 Go/Shell/Java 文件
+	au InsertLeave *.go,*.sh,*.java write
+
 augroup END
 
 

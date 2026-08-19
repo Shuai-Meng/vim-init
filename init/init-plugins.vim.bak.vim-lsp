@@ -44,27 +44,6 @@ call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 " 全文快速移动，<leader><leader>f{char} 即可触发
 Plug 'easymotion/vim-easymotion'
 
-"----------------------------------------------------------------------
-" easymotion 配置：快速跳转插件
-"----------------------------------------------------------------------
-" 核心映射：s{char}{label} 跨窗口跳转
-nmap s <Plug>(easymotion-overwin-f)
-" s{char}{char}{label} 双字符跳转（更精准）
-" Turn on case-insensitive feature
-let g:EasyMotion_smartcase = 1
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-
 " 文件浏览器，代替 netrw
 Plug 'justinmk/vim-dirvish'
 
@@ -84,11 +63,14 @@ Plug 'tpope/vim-commentary'
 "----------------------------------------------------------------------
 " which-key 配置：按下 Leader 键后显示可用的快捷键
 "----------------------------------------------------------------------
-" leader 键统一在 init-keymaps.vim 中定义，这里只配置 which-key 菜单
-
-" which-key 会自动检测 <leader> 按键，在 timeout 后弹出菜单
-" 不要手动映射 <leader>，否则会和 EasyMotion 等插件冲突
+" 设置等待时间（毫秒），按下 Leader 键后等待多长时间显示菜单
 set timeoutlen=500
+
+" 按下空格键显示 which-key 菜单
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" 按下逗号显示 localleader 菜单
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 " 定义 which-key 菜单内容
 let g:which_key_map =  {}
@@ -106,12 +88,6 @@ let g:which_key_map['w'] = {
       \ 'k' : ['<C-W>k'     , '移动到上方窗口']             ,
       \ '=' : ['<C-W>='     , '均衡窗口大小']        ,
       \ }
-
-" 注册 which-key 菜单（必须在 g:which_key_map 定义之后）
-autocmd VimEnter * call which_key#register('<Space>', "g:which_key_map")
-
-" which-key 会自动检测 <leader> 按键，在 timeout 后弹出菜单
-" 不需要手动映射 <leader>，which-key 会自动处理
 
 
 "----------------------------------------------------------------------
@@ -383,41 +359,10 @@ if index(g:bundle_group, 'nerdtree') >= 0
 	let g:NERDTreeMinimalUI = 1
 	let g:NERDTreeDirArrows = 1
 	let g:NERDTreeHijackNetrw = 0
-	let g:NERDTreeShowLineNumbers = 1        " 显示行号
-	let g:NERDTreeAutoCenter = 1             " 打开文件时居中显示
-	let g:NERDTreeShowHidden = 1             " 显示隐藏文件
-	let g:NERDTreeWinSize = 20               " 设置宽度为20
-	let g:NERDTreeIgnore = ['\.pyc','\~$','\.swp'] " 忽略这些文件
-	let g:NERDTreeShowBookmarks = 2          " 打开时显示书签
-	let g:nerdtree_tabs_open_on_console_startup = 1 " 终端启动时共享NERDTree
 	noremap <space>nn :NERDTree<cr>
 	noremap <space>no :NERDTreeFocus<cr>
 	noremap <space>nm :NERDTreeMirror<cr>
 	noremap <space>nt :NERDTreeToggle<cr>
-
-	" 启动 vim 时自动打开 NERDTree
-	autocmd VimEnter * NERDTree
-	autocmd VimEnter * wincmd p             " 光标回到编辑窗口
-
-	" 当只剩 NERDTree 窗口时自动关闭 vim
-	autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-	" 如果没有打开文件，自动打开 NERDTree
-	autocmd VimEnter * if !argc() | NERDTree | endif
-
-	" NERDTree 同步当前文件
-	function! IsNERDTreeOpen()
-	  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-	endfunction
-
-	function! SyncTree()
-	  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-	    NERDTreeFind
-	    wincmd p
-	  endif
-	endfunction
-
-	autocmd BufEnter * call SyncTree() " 高亮当前打开的文件
 
 	" NERDTree Git 状态图标配置
 	let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -487,7 +432,7 @@ if index(g:bundle_group, 'ale') >= 0
 				\ 'python': ['flake8', 'pylint'], 
 				\ 'lua': ['luac'], 
 				\ 'go': ['go build', 'gofmt'],
-				\ 'java': [],
+				\ 'java': ['javac'],
 				\ 'javascript': ['eslint'], 
 				\ }
 
@@ -523,123 +468,348 @@ endif
 
 
 "----------------------------------------------------------------------
-" LSP：coc.nvim 智能补全方案
-" vim-lsp 对 jdt:// URI 跳转无原生支持，切换到 coc.nvim
-" coc-java 扩展对 eclipse.jdt.ls 有完整支持（含 JDK/Spring 跳转）
+" LSP：vim-lsp + asyncomplete 轻量级 LSP 方案
 "----------------------------------------------------------------------
-" 检查 Vim 版本，coc.nvim 需要 9.0.0438+（Vim9 脚本语法要求）
-if index(g:bundle_group, 'lsp') >= 0 && has('patch-9.0.0438')
-	" coc.nvim 主插件
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if index(g:bundle_group, 'lsp') >= 0
+	" LSP 客户端
+	Plug 'prabirshrestha/vim-lsp'
 	
-	" 基本设置
-	set hidden
-	set nobackup
-	set nowritebackup
-	set updatetime=300
-	set shortmess+=c
+	" 异步补全框架
+	Plug 'prabirshrestha/asyncomplete.vim'
 	
-	" 自动安装扩展
-	let g:coc_global_extensions = [
-		\ 'coc-json',
-		\ 'coc-tsserver',
-		\ 'coc-java',
-		\ 'coc-java-dev',
-		\ 'coc-html',
-		\ 'coc-css',
-		\ 'coc-yaml',
-		\ 'coc-vimlsp',
-		\ ]
+	" LSP 补全源
+	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 	
-	" coc.nvim Java LSP 配置
-	" java.jdt.ls.java.home: 用 JDK 21 启动 eclipse.jdt.ls（替代 coc-java 自带的 JDK 23）
-	" runtimes: 告诉 eclipse.jdt.ls 项目编译使用 JDK 21
-	" coc-java 自带 lombok.jar，自动添加 -javaagent，无需手动配置 vmargs
-	let g:coc_user_config = {
-		\ 'java.jdt.ls.java.home': $HOME . '/programs/jdk-21.0.4',
-		\ 'java.configuration.runtimes': [
-		\   {
-		\     'name': 'JavaSE-21',
-		\     'path': $HOME . '/programs/jdk-21.0.4',
-		\   },
-		\ ],
-		\ 'java.import.maven.enabled': v:true,
-		\ 'java.import.maven.downloadSources': v:true,
-		\ 'java.references.includeDecompiledSources': v:true,
-		\ 'java.eclipse.downloadSources': v:true,
-		\ 'suggest.noselect': v:false,
-		\ 'suggest.enablePreselect': v:true,
-		\ }
+	" LSP 日志文件（调试用）
+	let g:lsp_log_file = $HOME . '/.cache/vim-lsp.log'
 	
-	" ---- Tab 补全导航 ----
-	" Tab/S-Tab 在补全菜单中上下导航
-	" Enter 确认选中的补全项
-	" Ctrl-Space 手动触发补全
+	" 自动安装 LSP 服务器
+	let g:lsp_auto_enable = 1
+	let g:lsp_diagnostics_enabled = 1
+	let g:lsp_diagnostics_float_cursor = 1
+	let g:lsp_signs_enabled = 1
+	let g:lsp_signs_error = {'text': '✗'}
+	let g:lsp_signs_warning = {'text': '⚠'}
+	let g:lsp_signs_hint = {'text': '💡'}
+	
+	" 启用格式化
+	let g:lsp_format_sync_timeout = 1000
+	
+	" Go LSP (gopls)
+	if executable('gopls')
+		autocmd User lsp_setup call lsp#register_server({
+			\ 'name': 'gopls',
+			\ 'cmd': {server_info -> ['gopls', '--remote=auto']},
+			\ 'allowlist': ['go'],
+			\ })
+	endif
+	
+	" Python LSP (pylsp)
+	if executable('pylsp')
+		autocmd User lsp_setup call lsp#register_server({
+			\ 'name': 'pylsp',
+			\ 'cmd': {server_info -> ['pylsp']},
+			\ 'allowlist': ['python'],
+			\ })
+	endif
+	
+	" JavaScript/TypeScript LSP
+	if executable('typescript-language-server')
+		autocmd User lsp_setup call lsp#register_server({
+			\ 'name': 'typescript-language-server',
+			\ 'cmd': {server_info -> ['typescript-language-server', '--stdio']},
+			\ 'allowlist': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
+			\ })
+	endif
+	
+	" Rust LSP (rust-analyzer)
+	if executable('rust-analyzer')
+		autocmd User lsp_setup call lsp#register_server({
+			\ 'name': 'rust-analyzer',
+			\ 'cmd': {server_info -> ['rust-analyzer']},
+			\ 'allowlist': ['rust'],
+			\ })
+	endif
+	
+	" C/C++ LSP (clangd)
+	if executable('clangd')
+		autocmd User lsp_setup call lsp#register_server({
+			\ 'name': 'clangd',
+			\ 'cmd': {server_info -> ['clangd']},
+			\ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
+			\ })
+	endif
+	
+	" Java LSP (eclipse.jdtls)
+	" 注意：不能用 expand('~...') 因为 wildignore 包含 *.jar 会导致路径为空
+	" root_uri: 从当前文件向上查找 pom.xml 作为项目根目录
+	" -data: 按项目名区分 workspace，避免多项目冲突
+	" -javaagent: Lombok 支持（让 eclipse.jdt.ls 识别 @Slf4j/@Data 等注解）
+	if executable('java')
+		let g:jdtls_jar = $HOME . '/.vim/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.8.0.v20260804-1928.jar'
+		let g:lombok_jar = $HOME . '/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar'
+		if filereadable(g:jdtls_jar) && filereadable(g:lombok_jar)
+			function! s:java_project_root() abort
+				let l:dir = getcwd()
+				while l:dir !=# '/'
+					if filereadable(l:dir . '/pom.xml') || filereadable(l:dir . '/build.gradle')
+						return l:dir
+					endif
+					let l:dir = fnamemodify(l:dir, ':h')
+				endwhile
+				return getcwd()
+			endfunction
+			autocmd User lsp_setup call lsp#register_server({
+				\ 'name': 'eclipse.jdt.ls',
+				\ 'cmd': {server_info -> [
+				\ 'java',
+				\ '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+				\ '-Dosgi.bundles.defaultStartLevel=4',
+				\ '-Declipse.product=org.eclipse.jdt.ls.core.product',
+				\ '-Dlog.protocol=true',
+				\ '-Dlog.level=ALL',
+				\ '-noverify',
+				\ '-Xmx1g',
+				\ '-javaagent:' . g:lombok_jar,
+				\ '--add-modules=ALL-SYSTEM',
+				\ '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+				\ '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+				\ '-jar', g:jdtls_jar,
+				\ '-configuration', $HOME . '/.vim/eclipse.jdt.ls/config_linux_arm',
+				\ '-data', $HOME . '/.cache/jdtls/' . fnamemodify(s:java_project_root(), ':t'),
+				\ ]},
+				\ 'root_uri': {server_info -> 'file://' . s:java_project_root()},
+				\ 'allowlist': ['java'],
+			\ 'initialization_options': {
+			\   'extendedClientCapabilities': {
+			\     'classFileContentsSupport': v:true,
+			\   },
+			\   'settings': {
+			\     'java': {
+			\       'configuration': {
+			\         'runtimes': [{
+			\           'name': 'JavaSE-21',
+			\           'path': $HOME . '/programs/jdk-21.0.4',
+			\           'source': $HOME . '/programs/jdk-21.0.4/lib/src.zip',
+			\         }],
+			\         'vmargs': '-javaagent:' . g:lombok_jar,
+			\       },
+			\       'import': {
+			\         'maven': {
+			\           'enabled': v:true,
+			\           'downloadSources': v:true,
+			\           'downloadJavadoc': v:false,
+			\         },
+			\         'gradle': {'enabled': v:false},
+			\       },
+			\       'references': {
+			\         'includeDecompiledSources': v:true,
+			\       },
+			\       'jdt': {
+			\         'ls': {
+			\           'javaagent': {'enabled': v:true, 'path': g:lombok_jar},
+			\         },
+			\       },
+			\     },
+			\   },
+			\ },
+				\ })
+		endif
+	endif
+	
+	" ===== JDT:// URI 支持 =====
+	" eclipse.jdt.ls 对 JAR 中的类返回 jdt:// URI，vim-lsp 原生不支持
+	" 需要通过 workspace/textDocumentContent 获取反编译源码后打开
+	" 参考: https://github.com/eclipse-jdtls/eclipse.jdt.ls/issues/1384
+	
+	" 缓存 jdt:// URI 对应的临时文件路径
+	let s:jdt_content_cache = {}
+	
+	" 获取 jdt:// URI 的反编译内容并打开
+	function! s:open_jdt_uri(uri, line, col) abort
+		" 检查缓存
+		if has_key(s:jdt_content_cache, a:uri)
+			let l:file = s:jdt_content_cache[a:uri]
+			if filereadable(l:file)
+				execute 'edit ' . fnameescape(l:file)
+				call cursor(a:line, a:col)
+				return
+			endif
+		endif
+		
+		" 找到 eclipse.jdt.ls 服务器
+		let l:servers = lsp#get_allowed_servers()
+		let l:jdt_server = ''
+		for l:s in l:servers
+			if l:s ==# 'eclipse.jdt.ls'
+				let l:jdt_server = l:s
+				break
+			endif
+		endfor
+		if empty(l:jdt_server)
+			echoerr 'No eclipse.jdt.ls server found'
+			return
+		endif
+		
+		" 发送 workspace/textDocumentContent 请求
+		echo 'Fetching class content...'
+		call lsp#send_request(l:jdt_server, {
+			\ 'method': 'workspace/textDocumentContent',
+			\ 'params': {'uri': a:uri},
+			\ 'on_notification': function('s:handle_jdt_content', [a:uri, a:line, a:col]),
+			\ })
+	endfunction
+	
+	" 处理 jdt:// 内容响应
+	function! s:handle_jdt_content(uri, line, col, data) abort
+		if lsp#client#is_error(a:data['response'])
+			echoerr 'Failed to fetch JDT content: ' . lsp#client#error_message(a:data['response'])
+			return
+		endif
+		
+		let l:content = a:data['response']['result']['content']
+		let l:language = get(a:data['response']['result'], 'language', 'java')
+		
+		" 从 URI 中提取类名作为临时文件名
+		let l:class_name = matchstr(a:uri, 'jdt://contents/[^/]*/\([^?]*\)\.class', '\1')
+		let l:class_name = substitute(l:class_name, '/', '.', 'g')
+		let l:tmpfile = tempname() . '.' . l:language
+		
+		" 写入反编译内容
+		call writefile(split(l:content, "\n", 1), l:tmpfile)
+		
+		" 缓存映射
+		let s:jdt_content_cache[a:uri] = l:tmpfile
+		
+		" 打开文件
+		execute 'edit ' . fnameescape(l:tmpfile)
+		execute 'setlocal filetype=' . l:language
+		execute 'setlocal buftype=nofile'
+		execute 'setlocal bufhidden=wipe'
+		execute 'setlocal noswapfile'
+		let &l:modifiable = 0
+		call cursor(a:line, a:col)
+		echo 'Opened ' . l:class_name
+	endfunction
+	
+	" 自定义 JavaDefinition 函数：先尝试标准跳转，失败时处理 jdt:// URI
+	function! s:java_definition() abort
+		" 保存当前状态
+		let l:ctx = { 'counter': 0, 'list': [], 'last_command_id': lsp#_new_command() }
+		
+		let l:servers = filter(lsp#get_allowed_servers(), 'lsp#capabilities#has_definition_provider(v:val)')
+		if empty(l:servers)
+			echo 'No definition provider'
+			return
+		endif
+		
+		let l:params = {
+			\ 'textDocument': lsp#get_text_document_identifier(),
+			\ 'position': lsp#get_position(),
+			\ }
+		
+		" 获取当前光标位置信息
+		let l:cur_line = line('.')
+		let l:cur_col = col('.')
+		
+		for l:server in l:servers
+			call lsp#send_request(l:server, {
+				\ 'method': 'textDocument/definition',
+				\ 'params': l:params,
+				\ 'on_notification': function('s:handle_java_definition', [l:server, l:cur_line, l:cur_col]),
+				\ })
+		endfor
+		echo 'Retrieving definition ...'
+	endfunction
+	
+	" 处理 Java 定义响应
+	function! s:handle_java_definition(server, cur_line, cur_col, data) abort
+		if lsp#client#is_error(a:data['response']) || !has_key(a:data['response'], 'result')
+			call lsp#utils#error('Failed to retrieve definition: ' . lsp#client#error_message(a:data['response']))
+			return
+		endif
+		
+		let l:result = a:data['response']['result']
+		
+		" 空结果
+		if empty(l:result)
+			echo 'No definition found'
+			return
+		endif
+		
+		" 处理 Location[] 或单个 Location
+		if type(l:result) == type([])
+			let l:locations = l:result
+		else
+			let l:locations = [l:result]
+		endif
+		
+		" 检查是否有 jdt:// URI
+		let l:has_jdt = 0
+		for l:loc in l:locations
+			let l:uri = has_key(l:loc, 'targetUri') ? l:loc['targetUri'] : l:loc['uri']
+			if l:uri =~# '^jdt://'
+				let l:has_jdt = 1
+				" 获取行号和列号
+				let l:range = has_key(l:loc, 'targetSelectionRange') ? l:loc['targetSelectionRange'] : l:loc['range']
+				let l:line = l:range['start']['line'] + 1
+				let l:col = l:range['start']['character'] + 1
+				call s:open_jdt_uri(l:uri, l:line, l:col)
+				return
+			endif
+		endfor
+		
+		" 没有 jdt:// URI，使用标准 vim-lsp 跳转
+		" 构造标准 location 格式
+		let l:vim_list = lsp#utils#location#_lsp_to_vim_list(l:result)
+		if empty(l:vim_list)
+			echo 'No definition found'
+			return
+		endif
+		
+		call lsp#utils#tagstack#_update()
+		let l:loc = l:vim_list[0]
+		call lsp#utils#location#_open_vim_list_item(l:loc, '')
+		echo 'Retrieved definition'
+	endfunction
+	
+	" 快捷键
+	autocmd FileType java nnoremap <buffer> gd :<C-u>call <SID>java_definition()<CR>
+	autocmd FileType go,python,javascript,typescript,rust,c,cpp nnoremap <buffer> gd :LspDefinition<CR>
+	autocmd FileType go,python,javascript,typescript,rust,c,cpp,java nnoremap <buffer> gr :LspReferences<CR>
+	autocmd FileType go,python,javascript,typescript,rust,c,cpp,java nnoremap <buffer> gi :LspImplementation<CR>
+	autocmd FileType go,python,javascript,typescript,rust,c,cpp,java nnoremap <buffer> K :LspHover<CR>
+	autocmd FileType go,python,javascript,typescript,rust,c,cpp,java nnoremap <buffer> <leader>rn :LspRename<CR>
+	autocmd FileType go,python,javascript,typescript,rust,c,cpp,java nnoremap <buffer> <leader>ca :LspCodeAction<CR>
+	
+	" 补全配置：延迟加载以避免函数未定义错误
+	augroup AsyncompleteLspSetup
+		autocmd!
+		autocmd User asyncomplete_setup call s:setup_asyncomplete_lsp()
+	augroup END
+
+	function! s:setup_asyncomplete_lsp()
+		if exists('*asyncomplete#sources#lsp#get_source_options')
+			call asyncomplete#register_source(asyncomplete#sources#lsp#get_source_options({
+				\ 'name': 'LSP',
+				\ 'priority': 10,
+				\ 'completor': function('asyncomplete#sources#lsp#completor'),
+				\ }))
+		endif
+	endfunction
+	
+	" 补全快捷键
+	inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ asyncomplete#complete()
+	inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+	inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+	
 	function! s:check_back_space() abort
 		let col = col('.') - 1
 		return !col || getline('.')[col - 1]  =~# '\s'
 	endfunction
-	
-	function! s:show_doc()
-		if (index(['vim','help'], &filetype) >= 0)
-			execute 'h '.expand('<cword>')
-		elseif (coc#rpc#ready())
-			call CocActionAsync('doHover')
-		else
-			execute '!' . &keywordprg . " " . expand('<cword>')
-		endif
-	endfunction
-	
-	" Tab 补全导航
-	inoremap <silent><expr> <TAB>
-		\ coc#pum#visible() ? coc#pum#next(1) :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ coc#refresh()
-	inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-	
-	" Enter 确认补全
-	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-		\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-	
-	" Ctrl-Space 触发补全
-	inoremap <silent><expr> <c-space> coc#refresh()
-	
-	" ---- 跳转 ----
-	" gd: 跳转到定义（支持 JDK/Spring 类跳转）
-	" gy: 跳转到类型定义
-	" gi: 跳转到实现
-	" gr: 查看所有引用
-	nmap <silent> gd <Plug>(coc-definition)
-	nmap <silent> gy <Plug>(coc-type-definition)
-	nmap <silent> gi <Plug>(coc-implementation)
-	nmap <silent> gr <Plug>(coc-references)
-	
-	" K: 显示文档/悬浮窗口
-	nnoremap <silent> K :call <SID>show_doc()<CR>
-	
-	" ---- 重构与代码操作 ----
-	" <leader>rn: 重命名符号
-	" <leader>ca: 代码操作（光标处）
-	xmap <leader>rn <Plug>(coc-rename)
-	nmap <leader>ca <Plug>(coc-codeaction-cursor)
-	xmap <leader>ca <Plug>(coc-codeaction-selected)
-	
-	" ---- 诊断导航 ----
-	" [d / ]d: 上/下一个诊断错误
-	nmap <silent> [d <Plug>(coc-diagnostic-prev)
-	nmap <silent> ]d <Plug>(coc-diagnostic-next)
-	
-	" ---- 格式化 ----
-	" <leader>f: 格式化选中区域
-	nmap <leader>f <Plug>(coc-format-selected)
-	xmap <leader>f <Plug>(coc-format-selected)
-	
-	" ---- 其他 ----
-	" 折叠代码
-	command! -nargs=0 Fold :call CocAction('fold')
-	
-	" 高亮光标下的符号
-	autocmd CursorHold * silent call CocActionAsync('highlight')
 endif
 
 

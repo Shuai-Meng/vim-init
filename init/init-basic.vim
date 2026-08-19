@@ -41,6 +41,33 @@ set ttimeoutlen=50
 " 显示光标位置
 set ruler
 
+" 显示相对行号，方便上下移动
+set relativenumber
+
+" 高亮当前行
+set cursorline
+
+" 高亮当前列
+set cursorcolumn
+
+" 文件修改时自动保存
+set autowrite
+
+" 允许切换到未保存的缓冲区
+set hidden
+
+" 禁用备份文件
+set nobackup
+
+" 禁用写入时备份
+set nowritebackup
+
+" 更新时间（毫秒），影响补全和 gitgutter 等插件响应速度
+set updatetime=300
+
+" 设置双字宽字符显示（如中文标点、特殊符号）
+set ambiwidth=double
+
 
 "----------------------------------------------------------------------
 " 搜索设置
@@ -71,7 +98,13 @@ if has('multi_byte')
 
 	" 打开文件时自动尝试下面顺序的编码
 	set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
+
+	" 设置菜单语言
+	set langmenu=zh_CN.UTF-8
 endif
+
+" 使用系统剪贴板（需要 vim 编译时支持 clipboard）
+set clipboard=unnamedplus
 
 
 "----------------------------------------------------------------------

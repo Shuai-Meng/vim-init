@@ -60,3 +60,131 @@ source ~/.vim/vim-init/init.vim
 # Credit
 
 TODO
+
+# 快捷键总结
+
+## Leader 键
+- `<Space>` - 主 Leader 键（按下后等待 500ms 显示 which-key 菜单）
+
+---
+
+## 📁 文件/Buffer 操作
+| 快捷键 | 功能 |
+|--------|------|
+| `<Space>bn` | 下一个 buffer |
+| `<Space>bp` | 上一个 buffer |
+| `<Space>nn` | 打开 NERDTree |
+| `<Space>no` | NERDTree 聚焦当前文件 |
+| `<Space>nm` | NERDTree 镜像同步 |
+| `<Space>nt` | 切换 NERDTree |
+| `<Space>ha` | 清除错误标记 |
+
+---
+
+## 📑 Tab 标签页
+| 快捷键 | 功能 |
+|--------|------|
+| `<Space>1-9` | 切换到第 1-9 个 tab |
+| `<Space>0` | 切换到最后一个 tab |
+| `<Space>tc` | 新建 tab |
+| `<Space>tq` | 关闭当前 tab |
+| `<Space>tn` | 下一个 tab |
+| `<Space>tp` | 上一个 tab |
+| `<Space>to` | 关闭其他 tab |
+| `<Space>tl` | 向左移动 tab |
+| `<Space>tr` | 向右移动 tab |
+| `Alt+1-9` | 切换到第 1-9 个 tab（Normal/Insert 模式） |
+
+---
+
+## 🪟 窗口操作（which-key: `<Space>w`）
+| 快捷键 | 功能 |
+|--------|------|
+| `<Space>ww` | 切换到另一个窗口 |
+| `<Space>wd` | 关闭当前窗口 |
+| `<Space>w-` | 水平分割 |
+| `<Space>w\|` | 垂直分割 |
+| `<Space>wh` | 移动到左边窗口 |
+| `<Space>wj` | 移动到下方窗口 |
+| `<Space>wl` | 移动到右边窗口 |
+| `<Space>wk` | 移动到上方窗口 |
+| `<Space>w=` | 均衡窗口大小 |
+
+---
+
+## 🔍 EasyMotion 快速跳转
+| 快捷键 | 功能 |
+|--------|------|
+| `s` | 跨窗口字符跳转 |
+| `<Space>f` | 当前窗口字符跳转 |
+| `<Space>F` | 跨窗口字符跳转 |
+| `<Space>w` | 当前窗口单词跳转 |
+| `<Space>W` | 跨窗口单词跳转 |
+| `<Space>j` | 向下跳转 |
+| `<Space>k` | 向上跳转 |
+| `<Space>L` | 行内跳转 |
+| `<Space>L` | 跨窗口行跳转 |
+
+---
+
+## 💻 coc.nvim LSP
+| 快捷键 | 功能 |
+|--------|------|
+| `gd` | 跳转到定义 |
+| `gy` | 跳转到类型定义 |
+| `gi` | 跳转到实现 |
+| `gr` | 查找引用 |
+| `K` | 显示文档 |
+| `[d` | 上一个诊断 |
+| `]d` | 下一个诊断 |
+| `<Space>rn` | 重命名符号 |
+| `<Space>ca` | 代码操作 |
+| `<Space>f` | 格式化选中区域 |
+| `Tab` | 补全下一项 |
+| `Shift+Tab` | 补全上一项 |
+| `Ctrl+Space` | 触发补全 |
+| `Enter` | 确认补全 |
+
+---
+
+## 📝 编辑模式（EMACS 风格）
+| 快捷键 | 功能 |
+|--------|------|
+| `Ctrl+a` | 光标到行首 |
+| `Ctrl+e` | 光标到行尾 |
+| `Ctrl+d` | 删除字符 |
+| `Ctrl+k` | 删除到行尾 |
+
+---
+
+## 🔧 工具插件
+| 快捷键 | 功能 |
+|--------|------|
+| `F9` | 切换 Tagbar |
+| `Alt+e` | choosewin 窗口选择 |
+| `Alt+=` | 展开选区 |
+| `Alt+-` | 缩小选区 |
+| `<Space>rg` | 语法检查 |
+| `<Space>rr` | 打开语法检查窗口 |
+| `<Space>rv` | 跳转到语法检查窗口 |
+| `<Space>rs` | 重置语法检查 |
+| `<Space>rx` | 关闭语法检查窗口 |
+| `<Space>rm` | 删除语法错误 |
+| `<Space>rd` | 禁用语法规则 |
+| `<Space>rn` | 下一个语法错误 |
+| `<Space>rp` | 上一个语法错误 |
+
+---
+
+## 🔎 搜索/导航
+| 快捷键 | 功能 |
+|--------|------|
+| `Ctrl+n` | LeaderF 最近文件 |
+| `Alt+p` | LeaderF 函数列表 |
+| `Alt+P` | LeaderF 标签列表 |
+| `Alt+n` | LeaderF Buffer 列表 |
+| `Alt+m` | LeaderF Tag 列表 |
+
+---
+
+**提示**: 按下 `<Space>` 等待 500ms 会显示 which-key 菜单，可以查看可用快捷键。
