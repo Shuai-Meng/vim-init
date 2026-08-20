@@ -1,0 +1,43 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 0,
+  "filesSkipped": [
+    "colors/desert256.vim",
+    "colors/dracula.vim",
+    "colors/eclipse2.vim",
+    "colors/gruvbox.vim",
+    "colors/monokai.vim",
+    "colors/oceanblack256.vim",
+    "colors/papercol.vim",
+    "colors/paradox.vim",
+    "colors/seoul256-light.vim",
+    "colors/seoul256.vim",
+    "colors/solarized.vim",
+    "colors/sublime.vim",
+    "init.vim",
+    "init/init-basic.vim",
+    "init/init-config.vim",
+    "init/init-keymaps.vim",
+    "init/init-plugins.vim",
+    "init/init-style.vim",
+    "init/init-tabsize.vim",
+    "plugin/argtextobj.vim",
+    "plugin/asyncrun.vim",
+    "plugin/asynctasks.vim",
+    "plugin/commentary.vim",
+    "plugin/indent-object.vim",
+    "plugin/script_load.vim"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 0,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": []
+}

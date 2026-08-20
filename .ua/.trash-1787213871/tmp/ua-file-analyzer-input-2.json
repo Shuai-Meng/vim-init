@@ -1,0 +1,182 @@
+{
+  "projectRoot": "/home/Admin/programs/vim-init",
+  "batchFiles": [
+    {
+      "path": "colors/desert256.vim",
+      "language": "vim",
+      "sizeLines": 338,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/dracula.vim",
+      "language": "vim",
+      "sizeLines": 178,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/eclipse2.vim",
+      "language": "vim",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/gruvbox.vim",
+      "language": "vim",
+      "sizeLines": 1239,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/monokai.vim",
+      "language": "vim",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/oceanblack256.vim",
+      "language": "vim",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/papercol.vim",
+      "language": "vim",
+      "sizeLines": 2182,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/paradox.vim",
+      "language": "vim",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/seoul256-light.vim",
+      "language": "vim",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/seoul256.vim",
+      "language": "vim",
+      "sizeLines": 341,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/solarized.vim",
+      "language": "vim",
+      "sizeLines": 1117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/sublime.vim",
+      "language": "vim",
+      "sizeLines": 566,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init.vim",
+      "language": "vim",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-basic.vim",
+      "language": "vim",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-config.vim",
+      "language": "vim",
+      "sizeLines": 186,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-keymaps.vim",
+      "language": "vim",
+      "sizeLines": 359,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-plugins.vim",
+      "language": "vim",
+      "sizeLines": 779,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-style.vim",
+      "language": "vim",
+      "sizeLines": 291,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-tabsize.vim",
+      "language": "vim",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/argtextobj.vim",
+      "language": "vim",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/asyncrun.vim",
+      "language": "vim",
+      "sizeLines": 2523,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/asynctasks.vim",
+      "language": "vim",
+      "sizeLines": 2606,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/commentary.vim",
+      "language": "vim",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/indent-object.vim",
+      "language": "vim",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/script_load.vim",
+      "language": "vim",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "colors/desert256.vim": [],
+    "colors/dracula.vim": [],
+    "colors/eclipse2.vim": [],
+    "colors/gruvbox.vim": [],
+    "colors/monokai.vim": [],
+    "colors/oceanblack256.vim": [],
+    "colors/papercol.vim": [],
+    "colors/paradox.vim": [],
+    "colors/seoul256-light.vim": [],
+    "colors/seoul256.vim": [],
+    "colors/solarized.vim": [],
+    "colors/sublime.vim": [],
+    "init.vim": [],
+    "init/init-basic.vim": [],
+    "init/init-config.vim": [],
+    "init/init-keymaps.vim": [],
+    "init/init-plugins.vim": [],
+    "init/init-style.vim": [],
+    "init/init-tabsize.vim": [],
+    "plugin/argtextobj.vim": [],
+    "plugin/asyncrun.vim": [],
+    "plugin/asynctasks.vim": [],
+    "plugin/commentary.vim": [],
+    "plugin/indent-object.vim": [],
+    "plugin/script_load.vim": []
+  }
+}

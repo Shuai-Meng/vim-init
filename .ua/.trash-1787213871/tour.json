@@ -1,0 +1,50 @@
+[
+  {
+    "order": 1,
+    "title": "项目概览",
+    "description": "从 README 了解这个轻量级 Vim 配置框架的设计理念（全中文注释、模块化、面向新人）与安装方式。",
+    "nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "配置入口",
+    "description": "init.vim 是唯一入口：防止重复加载、解析目录并按顺序 source init/ 下的六个功能模块。",
+    "nodeIds": ["file:init.vim", "file:init/init-basic.vim"]
+  },
+  {
+    "order": 3,
+    "title": "插件分组与加载",
+    "description": "init-plugins.vim 通过 bundle_group 分组声明插件，由内置的 vim-plug（autoload/plug.vim）安装与加载，可灵活选择功能组。",
+    "nodeIds": ["file:init/init-plugins.vim", "file:autoload/plug.vim"]
+  },
+  {
+    "order": 4,
+    "title": "快捷键学习",
+    "description": "init-keymaps.vim 是全项目注释最详尽的文件之一：Space 主 Leader、标签/窗口/终端/编译运行等键位映射，适合逐条阅读。",
+    "nodeIds": ["file:init/init-keymaps.vim"]
+  },
+  {
+    "order": 5,
+    "title": "显示样式与状态栏",
+    "description": "init-style.vim 负责配色、状态栏与标签栏渲染（Vim_Neat* 函数），并选择 colors/ 下的配色主题。",
+    "nodeIds": ["file:init/init-style.vim", "file:colors/gruvbox.vim"]
+  },
+  {
+    "order": 6,
+    "title": "异步任务系统",
+    "description": "asyncrun 是核心生产力插件：后台运行命令并输出到 quickfix；asynctasks 在其之上提供 ini 风格任务定义，runner 模块负责对接不同终端。",
+    "nodeIds": ["file:plugin/asyncrun.vim", "file:plugin/asynctasks.vim", "file:autoload/asyncrun/utils.vim"]
+  },
+  {
+    "order": 7,
+    "title": "弹出菜单与文本对象",
+    "description": "quickmenu 提供可编程弹出菜单（which-key 风格），commentary、unimpaired、argtextobj、indent-object 等小插件增强日常编辑。",
+    "nodeIds": ["file:autoload/quickmenu.vim", "file:plugin/commentary.vim", "file:plugin/unimpaired.vim"]
+  },
+  {
+    "order": 8,
+    "title": "终端兼容配置",
+    "description": "init-config.vim 初始化 ALT 键与功能键支持；tools/conf 下存放 SecureCRT/Xshell 键位配色与 flake8/pylint/splint 工具配置。",
+    "nodeIds": ["file:init/init-config.vim", "config:tools/conf/securecrt.key", "config:tools/conf/xshell.xcs"]
+  }
+]

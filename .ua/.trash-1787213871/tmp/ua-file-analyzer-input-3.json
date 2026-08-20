@@ -1,0 +1,84 @@
+{
+  "projectRoot": "/home/Admin/programs/vim-init",
+  "batchFiles": [
+    {
+      "path": "plugin/task_ui_source.vim",
+      "language": "vim",
+      "sizeLines": 281,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/txt.vim",
+      "language": "vim",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/unimpaired.vim",
+      "language": "vim",
+      "sizeLines": 533,
+      "fileCategory": "code"
+    },
+    {
+      "path": "syntax/quickmenu.vim",
+      "language": "vim",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/CustomKeyMap.ckm",
+      "language": "ckm",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/CustomSample.tkm",
+      "language": "tkm",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/flake8.conf",
+      "language": "conf",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/pylint.conf",
+      "language": "conf",
+      "sizeLines": 407,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/securecrt.key",
+      "language": "key",
+      "sizeLines": 365,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/splint.conf",
+      "language": "conf",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/xshell.xcs",
+      "language": "xcs",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "plugin/task_ui_source.vim": [],
+    "plugin/txt.vim": [],
+    "plugin/unimpaired.vim": [],
+    "syntax/quickmenu.vim": [],
+    "tools/conf/CustomKeyMap.ckm": [],
+    "tools/conf/CustomSample.tkm": [],
+    "tools/conf/flake8.conf": [],
+    "tools/conf/pylint.conf": [],
+    "tools/conf/securecrt.key": [],
+    "tools/conf/splint.conf": [],
+    "tools/conf/xshell.xcs": []
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 1,
+  "filesSkipped": [
+    "autoload/asyncrun/compat.vim",
+    "autoload/asyncrun/info.vim",
+    "autoload/asyncrun/locator.vim",
+    "autoload/asyncrun/macos.vim",
+    "autoload/asyncrun/program/capture.vim",
+    "autoload/asyncrun/program/echo.vim",
+    "autoload/asyncrun/program/shebang.vim",
+    "autoload/asyncrun/runner/external.vim",
+    "autoload/asyncrun/runner/floaterm.vim",
+    "autoload/asyncrun/runner/floaterm_reuse.vim",
+    "autoload/asyncrun/runner/gnome.vim",
+    "autoload/asyncrun/runner/gnome_tab.vim",
+    "autoload/asyncrun/runner/iterm.vim",
+    "autoload/asyncrun/runner/konsole.vim",
+    "autoload/asyncrun/runner/macos.vim",
+    "autoload/asyncrun/runner/quickui.vim",
+    "autoload/asyncrun/runner/termhelp.vim",
+    "autoload/asyncrun/runner/tmux.vim",
+    "autoload/asyncrun/runner/xfce.vim",
+    "autoload/asyncrun/runner/xterm.vim",
+    "autoload/asyncrun/utils.vim",
+    "autoload/plug.vim",
+    "autoload/quickmenu.vim",
+    "colors/desert.vim"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 1,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "results": [
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 190,
+      "nonEmptyLines": 148,
+      "sections": [
+        {
+          "heading": "前言",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "安装",
+          "level": 1,
+          "line": 19
+        },
+        {
+          "heading": "结构",
+          "level": 1,
+          "line": 40
+        },
+        {
+          "heading": "帮助",
+          "level": 1,
+          "line": 56
+        },
+        {
+          "heading": "Credit",
+          "level": 1,
+          "line": 60
+        },
+        {
+          "heading": "快捷键总结",
+          "level": 1,
+          "line": 64
+        },
+        {
+          "heading": "Leader 键",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "📁 文件/Buffer 操作",
+          "level": 2,
+          "line": 71
+        },
+        {
+          "heading": "📑 Tab 标签页",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "🪟 窗口操作（which-key: `<Space>w`）",
+          "level": 2,
+          "line": 100
+        },
+        {
+          "heading": "🔍 EasyMotion 快速跳转",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "💻 coc.nvim LSP",
+          "level": 2,
+          "line": 130
+        },
+        {
+          "heading": "📝 编辑模式（EMACS 风格）",
+          "level": 2,
+          "line": 150
+        },
+        {
+          "heading": "🔧 工具插件",
+          "level": 2,
+          "line": 160
+        },
+        {
+          "heading": "🔎 搜索/导航",
+          "level": 2,
+          "line": 179
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    }
+  ]
+}

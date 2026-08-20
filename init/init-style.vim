@@ -56,14 +56,9 @@ color desert256
 "----------------------------------------------------------------------
 " 状态栏设置
 "----------------------------------------------------------------------
-set statusline=                                 " 清空状态了
-set statusline+=\ %F                            " 文件名
-set statusline+=\ [%1*%M%*%n%R%H]               " buffer 编号和状态
-set statusline+=%=                              " 向右对齐
-set statusline+=\ %y                            " 文件类型
-
-" 最右边显示文件编码和行号等信息，并且固定在一个 group 中，优先占位
-set statusline+=\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %v:%l/%L%)
+"
+" 状态栏由 airline 插件负责（配置见 init/init-plugins.vim），这里不再自定义，
+" 避免自定义 statusline 被 airline 在 VimEnter/WinEnter 事件中覆盖造成困惑。
 
 
 "----------------------------------------------------------------------
@@ -286,6 +281,5 @@ endfunc
 set tabline=%!Vim_NeatTabLine()
 set guitablabel=%{Vim_NeatGuiTabLabel()}
 set guitabtooltip=%{Vim_NeatGuiTabTip()}
-
 
 

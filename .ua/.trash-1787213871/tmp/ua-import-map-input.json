@@ -1,0 +1,320 @@
+{
+  "projectRoot": "/home/Admin/programs/vim-init",
+  "files": [
+    {
+      "path": ".ua/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": ".ua/config.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "autoload/asyncrun/compat.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/info.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/locator.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/macos.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/capture.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/echo.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/shebang.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/external.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/floaterm.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/floaterm_reuse.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/gnome.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/gnome_tab.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/iterm.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/konsole.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/macos.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/quickui.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/termhelp.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/tmux.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/xfce.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/xterm.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/utils.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/plug.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/quickmenu.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/desert.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/desert256.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/dracula.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/eclipse2.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/gruvbox.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/monokai.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/oceanblack256.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/papercol.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/paradox.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/seoul256-light.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/seoul256.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/solarized.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/sublime.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "init.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-basic.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-config.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-keymaps.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-plugins.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-style.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-tabsize.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/argtextobj.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/asyncrun.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/asynctasks.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/commentary.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/indent-object.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/script_load.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/task_ui_source.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/txt.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/unimpaired.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "syntax/quickmenu.vim",
+      "language": "vim",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/CustomKeyMap.ckm",
+      "language": "ckm",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/CustomSample.tkm",
+      "language": "tkm",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/flake8.conf",
+      "language": "conf",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/pylint.conf",
+      "language": "conf",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/securecrt.key",
+      "language": "key",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/splint.conf",
+      "language": "conf",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/xshell.xcs",
+      "language": "xcs",
+      "fileCategory": "code"
+    }
+  ]
+}

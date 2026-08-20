@@ -1,0 +1,105 @@
+[
+  {
+    "id": "layer:core-config",
+    "name": "核心配置",
+    "description": "配置入口与六个功能模块（基础、常规、缩进、插件、样式、键位），构成整个 Vim 配置的主干，按顺序由 init.vim 加载。",
+    "nodeIds": [
+      "file:init.vim",
+      "file:init/init-basic.vim",
+      "file:init/init-config.vim",
+      "file:init/init-tabsize.vim",
+      "file:init/init-plugins.vim",
+      "file:init/init-style.vim",
+      "file:init/init-keymaps.vim"
+    ]
+  },
+  {
+    "id": "layer:asyncrun",
+    "name": "asyncrun 异步任务系统",
+    "description": "后台运行命令并输出到 quickfix 的任务系统：主插件、脚本加载器、模糊查找数据源，以及 autoload 下按终端环境划分的 runner 与 program 模块。",
+    "nodeIds": [
+      "file:plugin/asyncrun.vim",
+      "file:plugin/script_load.vim",
+      "file:plugin/task_ui_source.vim",
+      "file:autoload/asyncrun/compat.vim",
+      "file:autoload/asyncrun/info.vim",
+      "file:autoload/asyncrun/locator.vim",
+      "file:autoload/asyncrun/macos.vim",
+      "file:autoload/asyncrun/utils.vim",
+      "file:autoload/asyncrun/program/capture.vim",
+      "file:autoload/asyncrun/program/echo.vim",
+      "file:autoload/asyncrun/program/shebang.vim",
+      "file:autoload/asyncrun/runner/external.vim",
+      "file:autoload/asyncrun/runner/floaterm.vim",
+      "file:autoload/asyncrun/runner/floaterm_reuse.vim",
+      "file:autoload/asyncrun/runner/gnome.vim",
+      "file:autoload/asyncrun/runner/gnome_tab.vim",
+      "file:autoload/asyncrun/runner/iterm.vim",
+      "file:autoload/asyncrun/runner/konsole.vim",
+      "file:autoload/asyncrun/runner/macos.vim",
+      "file:autoload/asyncrun/runner/quickui.vim",
+      "file:autoload/asyncrun/runner/termhelp.vim",
+      "file:autoload/asyncrun/runner/tmux.vim",
+      "file:autoload/asyncrun/runner/xfce.vim",
+      "file:autoload/asyncrun/runner/xterm.vim"
+    ]
+  },
+  {
+    "id": "layer:plugins",
+    "name": "内置插件与菜单工具",
+    "description": "除 asyncrun 外随配置内置的插件：vim-plug 插件管理器、quickmenu 弹出菜单及其语法高亮、文本对象与注释类小型插件、asynctasks 任务系统。",
+    "nodeIds": [
+      "file:autoload/plug.vim",
+      "file:autoload/quickmenu.vim",
+      "file:syntax/quickmenu.vim",
+      "file:plugin/argtextobj.vim",
+      "file:plugin/asynctasks.vim",
+      "file:plugin/commentary.vim",
+      "file:plugin/indent-object.vim",
+      "file:plugin/txt.vim",
+      "file:plugin/unimpaired.vim"
+    ]
+  },
+  {
+    "id": "layer:themes",
+    "name": "配色主题",
+    "description": "内置的 13 套配色方案（desert、dracula、gruvbox、solarized、seoul 等），由 init-style.vim 按配置启用。",
+    "nodeIds": [
+      "file:colors/desert.vim",
+      "file:colors/desert256.vim",
+      "file:colors/dracula.vim",
+      "file:colors/eclipse2.vim",
+      "file:colors/gruvbox.vim",
+      "file:colors/monokai.vim",
+      "file:colors/oceanblack256.vim",
+      "file:colors/papercol.vim",
+      "file:colors/paradox.vim",
+      "file:colors/seoul256-light.vim",
+      "file:colors/seoul256.vim",
+      "file:colors/solarized.vim",
+      "file:colors/sublime.vim"
+    ]
+  },
+  {
+    "id": "layer:terminal-config",
+    "name": "终端工具配置",
+    "description": "为 SecureCRT、Xshell 等终端软件准备的键位/配色/转义序列配置文件，以及 flake8、pylint、splint 等工具的参数配置，供 init-config.vim 的终端兼容设置参考。",
+    "nodeIds": [
+      "config:tools/conf/CustomKeyMap.ckm",
+      "config:tools/conf/CustomSample.tkm",
+      "config:tools/conf/flake8.conf",
+      "config:tools/conf/pylint.conf",
+      "config:tools/conf/securecrt.key",
+      "config:tools/conf/splint.conf",
+      "config:tools/conf/xshell.xcs"
+    ]
+  },
+  {
+    "id": "layer:documentation",
+    "name": "项目文档",
+    "description": "README 总览：设计理念、安装方式、模块结构与快捷键总结，是了解全项目的最佳起点。",
+    "nodeIds": [
+      "document:README.md"
+    ]
+  }
+]

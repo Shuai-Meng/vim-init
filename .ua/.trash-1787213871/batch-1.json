@@ -1,0 +1,588 @@
+{
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "项目总览文档：阐述轻量级、全中文注释、模块化 Vim 配置的设计理念，给出安装方法、模块结构与快捷键总结，是全项目的入口文档。",
+      "tags": ["documentation", "entry-point", "overview", "keymaps"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:autoload/asyncrun/compat.vim",
+      "type": "file",
+      "name": "compat.vim",
+      "filePath": "autoload/asyncrun/compat.vim",
+      "summary": "asyncrun 的兼容层：为旧版 Vim/Neovim 提供 glob、文件列表等兼容函数，并探测 Python 支持情况。",
+      "tags": ["compatibility", "asyncrun", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/compat.vim:asyncrun#compat#glob",
+      "type": "function",
+      "name": "asyncrun#compat#glob",
+      "filePath": "autoload/asyncrun/compat.vim",
+      "lineRange": [22, 43],
+      "summary": "兼容的 glob 实现，统一不同 Vim 版本的文件通配行为。",
+      "tags": ["compatibility", "filesystem"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/compat.vim:asyncrun#compat#check_python",
+      "type": "function",
+      "name": "asyncrun#compat#check_python",
+      "filePath": "autoload/asyncrun/compat.vim",
+      "lineRange": [64, 88],
+      "summary": "检测系统中可用的 Python 解释器并返回路径，供补全等场景使用。",
+      "tags": ["compatibility", "python"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/info.vim",
+      "type": "file",
+      "name": "info.vim",
+      "filePath": "autoload/asyncrun/info.vim",
+      "summary": "asyncrun 的信息查询模块：列出文件类型、环境变量、路径、可执行文件、runner 与 program 列表，供命令补全与配置使用。",
+      "tags": ["asyncrun", "discovery", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:autoload/asyncrun/info.vim:asyncrun#info#list_runner",
+      "type": "function",
+      "name": "asyncrun#info#list_runner",
+      "filePath": "autoload/asyncrun/info.vim",
+      "lineRange": [142, 192],
+      "summary": "枚举 asyncrun 当前可用的全部运行器（runner）名称。",
+      "tags": ["asyncrun", "discovery"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/info.vim:asyncrun#info#list_program",
+      "type": "function",
+      "name": "asyncrun#info#list_program",
+      "filePath": "autoload/asyncrun/info.vim",
+      "lineRange": [192, 229],
+      "summary": "枚举 asyncrun 已加载的程序包装器（program）名称。",
+      "tags": ["asyncrun", "discovery"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/locator.vim",
+      "type": "file",
+      "name": "locator.vim",
+      "filePath": "autoload/asyncrun/locator.vim",
+      "summary": "特殊缓冲区路径定位工具：识别并返回 quickfix、终端等特殊 buffer 的路径，供跳转与状态判断使用。",
+      "tags": ["asyncrun", "buffer", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/locator.vim:asyncrun#locator#detect",
+      "type": "function",
+      "name": "asyncrun#locator#detect",
+      "filePath": "autoload/asyncrun/locator.vim",
+      "lineRange": [153, 164],
+      "summary": "根据名称特征探测当前 buffer 是否为 asyncrun 相关的特殊缓冲区。",
+      "tags": ["asyncrun", "buffer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/macos.vim",
+      "type": "file",
+      "name": "macos.vim",
+      "filePath": "autoload/asyncrun/macos.vim",
+      "summary": "asyncrun 的 macOS 专属支持：通过 AppleScript 生成脚本并在 Terminal.app / iTerm2 新窗口中运行任务。",
+      "tags": ["asyncrun", "macos", "terminal"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:autoload/asyncrun/macos.vim:asyncrun#macos#open_terminal",
+      "type": "function",
+      "name": "asyncrun#macos#open_terminal",
+      "filePath": "autoload/asyncrun/macos.vim",
+      "lineRange": [78, 108],
+      "summary": "在 macOS Terminal.app 中打开新窗口运行指定脚本。",
+      "tags": ["asyncrun", "macos", "terminal"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/macos.vim:asyncrun#macos#open_iterm",
+      "type": "function",
+      "name": "asyncrun#macos#open_iterm",
+      "filePath": "autoload/asyncrun/macos.vim",
+      "lineRange": [205, 220],
+      "summary": "在 iTerm2 中打开窗口运行脚本，兼容新旧版本 iTerm2。",
+      "tags": ["asyncrun", "macos", "terminal"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/macos.vim:asyncrun#macos#check",
+      "type": "function",
+      "name": "asyncrun#macos#check",
+      "filePath": "autoload/asyncrun/macos.vim",
+      "lineRange": [285, 294],
+      "summary": "检查当前系统是否为 macOS，非 macOS 返回失败以阻止错误使用。",
+      "tags": ["asyncrun", "macos"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/program/capture.vim",
+      "type": "file",
+      "name": "capture.vim",
+      "filePath": "autoload/asyncrun/program/capture.vim",
+      "summary": "程序包装器：把命令输出重定向到捕获文件再读回 quickfix，保证输出完整可检索。",
+      "tags": ["asyncrun", "program", "output"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/program/echo.vim",
+      "type": "file",
+      "name": "echo.vim",
+      "filePath": "autoload/asyncrun/program/echo.vim",
+      "summary": "最简 program 示例：将命令作为 echo 文本输出，主要用于验证加载链路。",
+      "tags": ["asyncrun", "program", "example"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/program/shebang.vim",
+      "type": "file",
+      "name": "shebang.vim",
+      "filePath": "autoload/asyncrun/program/shebang.vim",
+      "summary": "程序包装器：为缺少 shebang 的脚本命令自动生成带解释器的临时可执行脚本。",
+      "tags": ["asyncrun", "program", "script"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/program/shebang.vim:asyncrun#program#shebang#translate",
+      "type": "function",
+      "name": "asyncrun#program#shebang#translate",
+      "filePath": "autoload/asyncrun/program/shebang.vim",
+      "lineRange": [14, 42],
+      "summary": "把命令翻译为可执行脚本形式，自动补上 shebang 解释器声明。",
+      "tags": ["asyncrun", "program", "script"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/external.vim",
+      "type": "file",
+      "name": "external.vim",
+      "filePath": "autoload/asyncrun/runner/external.vim",
+      "summary": "asyncrun 运行器：在 Windows 上以外部进程方式运行任务并接入输出。",
+      "tags": ["asyncrun", "runner", "windows"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/external.vim:asyncrun#runner#external#run",
+      "type": "function",
+      "name": "asyncrun#runner#external#run",
+      "filePath": "autoload/asyncrun/runner/external.vim",
+      "lineRange": [16, 32],
+      "summary": "外部进程运行入口：启动系统命令并处理输出。",
+      "tags": ["asyncrun", "runner"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/floaterm.vim",
+      "type": "file",
+      "name": "floaterm.vim",
+      "filePath": "autoload/asyncrun/runner/floaterm.vim",
+      "summary": "asyncrun 运行器：在 vim-floaterm 浮动终端中运行任务，支持关闭回调。",
+      "tags": ["asyncrun", "runner", "floaterm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/floaterm.vim:asyncrun#runner#floaterm#run",
+      "type": "function",
+      "name": "asyncrun#runner#floaterm#run",
+      "filePath": "autoload/asyncrun/runner/floaterm.vim",
+      "lineRange": [28, 67],
+      "summary": "在 floaterm 浮动终端中启动任务命令。",
+      "tags": ["asyncrun", "runner", "floaterm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/floaterm_reuse.vim",
+      "type": "file",
+      "name": "floaterm_reuse.vim",
+      "filePath": "autoload/asyncrun/runner/floaterm_reuse.vim",
+      "summary": "asyncrun 运行器：复用已存在的 floaterm 窗口运行任务，避免反复新建终端。",
+      "tags": ["asyncrun", "runner", "floaterm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/floaterm_reuse.vim:asyncrun#runner#floaterm_reuse#run",
+      "type": "function",
+      "name": "asyncrun#runner#floaterm_reuse#run",
+      "filePath": "autoload/asyncrun/runner/floaterm_reuse.vim",
+      "lineRange": [12, 27],
+      "summary": "复用现有 floaterm 窗口执行任务命令。",
+      "tags": ["asyncrun", "runner", "floaterm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/gnome.vim",
+      "type": "file",
+      "name": "gnome.vim",
+      "filePath": "autoload/asyncrun/runner/gnome.vim",
+      "summary": "asyncrun 运行器：在 GNOME Terminal 中打开新窗口运行任务。",
+      "tags": ["asyncrun", "runner", "gnome"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/gnome.vim:asyncrun#runner#gnome#run",
+      "type": "function",
+      "name": "asyncrun#runner#gnome#run",
+      "filePath": "autoload/asyncrun/runner/gnome.vim",
+      "lineRange": [14, 28],
+      "summary": "在 GNOME Terminal 新窗口中启动任务。",
+      "tags": ["asyncrun", "runner", "gnome"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/gnome_tab.vim",
+      "type": "file",
+      "name": "gnome_tab.vim",
+      "filePath": "autoload/asyncrun/runner/gnome_tab.vim",
+      "summary": "asyncrun 运行器：在 GNOME Terminal 的新标签页中运行任务。",
+      "tags": ["asyncrun", "runner", "gnome"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/gnome_tab.vim:asyncrun#runner#gnome_tab#run",
+      "type": "function",
+      "name": "asyncrun#runner#gnome_tab#run",
+      "filePath": "autoload/asyncrun/runner/gnome_tab.vim",
+      "lineRange": [13, 27],
+      "summary": "在 GNOME Terminal 新标签页中启动任务。",
+      "tags": ["asyncrun", "runner", "gnome"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/iterm.vim",
+      "type": "file",
+      "name": "iterm.vim",
+      "filePath": "autoload/asyncrun/runner/iterm.vim",
+      "summary": "asyncrun 运行器：在 macOS iTerm2 新窗口中运行任务，依赖 macOS 支持模块。",
+      "tags": ["asyncrun", "runner", "macos"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/iterm.vim:asyncrun#runner#iterm#run",
+      "type": "function",
+      "name": "asyncrun#runner#iterm#run",
+      "filePath": "autoload/asyncrun/runner/iterm.vim",
+      "lineRange": [10, 19],
+      "summary": "在 iTerm2 新窗口中启动任务，非 macOS 环境直接报错。",
+      "tags": ["asyncrun", "runner", "macos"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/konsole.vim",
+      "type": "file",
+      "name": "konsole.vim",
+      "filePath": "autoload/asyncrun/runner/konsole.vim",
+      "summary": "asyncrun 运行器：在 KDE Konsole 新窗口中运行任务。",
+      "tags": ["asyncrun", "runner", "konsole"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/konsole.vim:asyncrun#runner#konsole#run",
+      "type": "function",
+      "name": "asyncrun#runner#konsole#run",
+      "filePath": "autoload/asyncrun/runner/konsole.vim",
+      "lineRange": [14, 28],
+      "summary": "在 KDE Konsole 新窗口中启动任务。",
+      "tags": ["asyncrun", "runner", "konsole"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/macos.vim",
+      "type": "file",
+      "name": "macos.vim",
+      "filePath": "autoload/asyncrun/runner/macos.vim",
+      "summary": "asyncrun 运行器：在 macOS Terminal.app 新窗口中运行任务。",
+      "tags": ["asyncrun", "runner", "macos"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/macos.vim:asyncrun#runner#macos#run",
+      "type": "function",
+      "name": "asyncrun#runner#macos#run",
+      "filePath": "autoload/asyncrun/runner/macos.vim",
+      "lineRange": [10, 18],
+      "summary": "在 macOS Terminal.app 新窗口中启动任务。",
+      "tags": ["asyncrun", "runner", "macos"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/quickui.vim",
+      "type": "file",
+      "name": "quickui.vim",
+      "filePath": "autoload/asyncrun/runner/quickui.vim",
+      "summary": "asyncrun 运行器：使用 quickui 弹出选择菜单，让用户挑选任务后运行。",
+      "tags": ["asyncrun", "runner", "quickui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/quickui.vim:asyncrun#runner#quickui#run",
+      "type": "function",
+      "name": "asyncrun#runner#quickui#run",
+      "filePath": "autoload/asyncrun/runner/quickui.vim",
+      "lineRange": [17, 30],
+      "summary": "通过 quickui 菜单选择并启动任务命令。",
+      "tags": ["asyncrun", "runner", "quickui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/termhelp.vim",
+      "type": "file",
+      "name": "termhelp.vim",
+      "filePath": "autoload/asyncrun/runner/termhelp.vim",
+      "summary": "asyncrun 运行器：在 Vim 内置终端窗口中运行任务并提供帮助输出。",
+      "tags": ["asyncrun", "runner", "terminal"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/termhelp.vim:asyncrun#runner#termhelp#run",
+      "type": "function",
+      "name": "asyncrun#runner#termhelp#run",
+      "filePath": "autoload/asyncrun/runner/termhelp.vim",
+      "lineRange": [12, 17],
+      "summary": "在内置终端窗口中启动任务命令。",
+      "tags": ["asyncrun", "runner", "terminal"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/tmux.vim",
+      "type": "file",
+      "name": "tmux.vim",
+      "filePath": "autoload/asyncrun/runner/tmux.vim",
+      "summary": "asyncrun 运行器：在 tmux 新窗格中运行任务。",
+      "tags": ["asyncrun", "runner", "tmux"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/tmux.vim:asyncrun#runner#tmux#run",
+      "type": "function",
+      "name": "asyncrun#runner#tmux#run",
+      "filePath": "autoload/asyncrun/runner/tmux.vim",
+      "lineRange": [12, 20],
+      "summary": "在 tmux 新窗格中启动任务命令。",
+      "tags": ["asyncrun", "runner", "tmux"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/xfce.vim",
+      "type": "file",
+      "name": "xfce.vim",
+      "filePath": "autoload/asyncrun/runner/xfce.vim",
+      "summary": "asyncrun 运行器：在 XFCE 终端中运行任务。",
+      "tags": ["asyncrun", "runner", "xfce"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/xfce.vim:asyncrun#runner#xfce#run",
+      "type": "function",
+      "name": "asyncrun#runner#xfce#run",
+      "filePath": "autoload/asyncrun/runner/xfce.vim",
+      "lineRange": [14, 28],
+      "summary": "在 XFCE 终端中启动任务。",
+      "tags": ["asyncrun", "runner", "xfce"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/runner/xterm.vim",
+      "type": "file",
+      "name": "xterm.vim",
+      "filePath": "autoload/asyncrun/runner/xterm.vim",
+      "summary": "asyncrun 运行器：在 XTerm 新窗口中运行任务。",
+      "tags": ["asyncrun", "runner", "xterm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/runner/xterm.vim:asyncrun#runner#xterm#run",
+      "type": "function",
+      "name": "asyncrun#runner#xterm#run",
+      "filePath": "autoload/asyncrun/runner/xterm.vim",
+      "lineRange": [12, 28],
+      "summary": "在 XTerm 新窗口中启动任务命令。",
+      "tags": ["asyncrun", "runner", "xterm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/asyncrun/utils.vim",
+      "type": "file",
+      "name": "utils.vim",
+      "filePath": "autoload/asyncrun/utils.vim",
+      "summary": "asyncrun 通用工具库：错误消息、字符串处理、shell 转义、临时文件、quickfix 请求、路径比较等基础函数。",
+      "tags": ["asyncrun", "utility", "helpers"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:autoload/asyncrun/utils.vim:asyncrun#utils#shellescape",
+      "type": "function",
+      "name": "asyncrun#utils#shellescape",
+      "filePath": "autoload/asyncrun/utils.vim",
+      "lineRange": [59, 77],
+      "summary": "跨平台安全的 shell 参数转义，兼容不同 shell 特性。",
+      "tags": ["asyncrun", "shell", "escaping"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/asyncrun/utils.vim:asyncrun#utils#isolate",
+      "type": "function",
+      "name": "asyncrun#utils#isolate",
+      "filePath": "autoload/asyncrun/utils.vim",
+      "lineRange": [89, 120],
+      "summary": "隔离执行命令：把一条命令包装成可独立运行的脚本形式。",
+      "tags": ["asyncrun", "shell", "script"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/plug.vim",
+      "type": "file",
+      "name": "plug.vim",
+      "filePath": "autoload/plug.vim",
+      "summary": "内置的 vim-plug 插件管理器实现：提供 plug#begin/end 声明插件、安装更新、按需加载、helptags 生成等完整能力，保证离线环境可运行。",
+      "tags": ["vim-plug", "plugin-manager", "entry-point"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:autoload/plug.vim:plug#begin",
+      "type": "function",
+      "name": "plug#begin",
+      "filePath": "autoload/plug.vim",
+      "lineRange": [239, 341],
+      "summary": "vim-plug 入口：初始化插件目录、加载既有插件列表并切换 runtimepath。",
+      "tags": ["vim-plug", "plugin-manager"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:autoload/plug.vim:plug#end",
+      "type": "function",
+      "name": "plug#end",
+      "filePath": "autoload/plug.vim",
+      "lineRange": [342, 614],
+      "summary": "vim-plug 收尾：校验插件声明、生成帮助标签并注册命令。",
+      "tags": ["vim-plug", "plugin-manager"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:autoload/plug.vim:plug#load",
+      "type": "function",
+      "name": "plug#load",
+      "filePath": "autoload/plug.vim",
+      "lineRange": [615, 717],
+      "summary": "按需加载指定插件及其依赖，并执行注册的加载后钩子。",
+      "tags": ["vim-plug", "lazy-load"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:autoload/plug.vim:plug#helptags",
+      "type": "function",
+      "name": "plug#helptags",
+      "filePath": "autoload/plug.vim",
+      "lineRange": [802, 900],
+      "summary": "为所有已安装插件生成 helptags 帮助索引。",
+      "tags": ["vim-plug", "help"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:autoload/quickmenu.vim",
+      "type": "file",
+      "name": "quickmenu.vim",
+      "filePath": "autoload/quickmenu.vim",
+      "summary": "quickmenu 插件实现：提供窗口与底部两种弹出式菜单，支持按文件类型过滤、菜单展开、快捷键选择等能力。",
+      "tags": ["quickmenu", "ui", "menu"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:autoload/quickmenu.vim:quickmenu#reset",
+      "type": "function",
+      "name": "quickmenu#reset",
+      "filePath": "autoload/quickmenu.vim",
+      "lineRange": [126, 132],
+      "summary": "清空并重建当前菜单条目列表。",
+      "tags": ["quickmenu", "menu"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/quickmenu.vim:quickmenu#append",
+      "type": "function",
+      "name": "quickmenu#append",
+      "filePath": "autoload/quickmenu.vim",
+      "lineRange": [132, 175],
+      "summary": "向菜单追加一个条目，支持回调事件与展开子菜单。",
+      "tags": ["quickmenu", "menu"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/quickmenu.vim:quickmenu#toggle",
+      "type": "function",
+      "name": "quickmenu#toggle",
+      "filePath": "autoload/quickmenu.vim",
+      "lineRange": [195, 250],
+      "summary": "切换指定菜单的显示/隐藏状态。",
+      "tags": ["quickmenu", "menu"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:autoload/quickmenu.vim:quickmenu#bottom",
+      "type": "function",
+      "name": "quickmenu#bottom",
+      "filePath": "autoload/quickmenu.vim",
+      "lineRange": [648, 738],
+      "summary": "以底部弹出面板形式显示菜单。",
+      "tags": ["quickmenu", "menu"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:colors/desert.vim",
+      "type": "file",
+      "name": "desert.vim",
+      "filePath": "colors/desert.vim",
+      "summary": "经典 desert 配色方案（256 色移植前的基础版本），提供暖色调语法高亮。",
+      "tags": ["colorscheme", "desert", "theme"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "document:README.md", "target": "file:init.vim", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:README.md", "target": "file:init/init-keymaps.vim", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "document:README.md", "target": "file:init/init-plugins.vim", "type": "documents", "direction": "forward", "weight": 0.5},
+    {"source": "file:autoload/plug.vim", "target": "function:autoload/plug.vim:plug#begin", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/plug.vim", "target": "function:autoload/plug.vim:plug#end", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/plug.vim", "target": "function:autoload/plug.vim:plug#load", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/plug.vim", "target": "function:autoload/plug.vim:plug#helptags", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/quickmenu.vim", "target": "function:autoload/quickmenu.vim:quickmenu#reset", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/quickmenu.vim", "target": "function:autoload/quickmenu.vim:quickmenu#append", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/quickmenu.vim", "target": "function:autoload/quickmenu.vim:quickmenu#toggle", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/quickmenu.vim", "target": "function:autoload/quickmenu.vim:quickmenu#bottom", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/utils.vim", "target": "function:autoload/asyncrun/utils.vim:asyncrun#utils#shellescape", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/utils.vim", "target": "function:autoload/asyncrun/utils.vim:asyncrun#utils#isolate", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/info.vim", "target": "function:autoload/asyncrun/info.vim:asyncrun#info#list_runner", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/info.vim", "target": "function:autoload/asyncrun/info.vim:asyncrun#info#list_program", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/locator.vim", "target": "function:autoload/asyncrun/locator.vim:asyncrun#locator#detect", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/macos.vim", "target": "function:autoload/asyncrun/macos.vim:asyncrun#macos#open_terminal", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/macos.vim", "target": "function:autoload/asyncrun/macos.vim:asyncrun#macos#open_iterm", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/macos.vim", "target": "function:autoload/asyncrun/macos.vim:asyncrun#macos#check", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/compat.vim", "target": "function:autoload/asyncrun/compat.vim:asyncrun#compat#glob", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/compat.vim", "target": "function:autoload/asyncrun/compat.vim:asyncrun#compat#check_python", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/program/shebang.vim", "target": "function:autoload/asyncrun/program/shebang.vim:asyncrun#program#shebang#translate", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/external.vim", "target": "function:autoload/asyncrun/runner/external.vim:asyncrun#runner#external#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/floaterm.vim", "target": "function:autoload/asyncrun/runner/floaterm.vim:asyncrun#runner#floaterm#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/floaterm_reuse.vim", "target": "function:autoload/asyncrun/runner/floaterm_reuse.vim:asyncrun#runner#floaterm_reuse#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/gnome.vim", "target": "function:autoload/asyncrun/runner/gnome.vim:asyncrun#runner#gnome#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/gnome_tab.vim", "target": "function:autoload/asyncrun/runner/gnome_tab.vim:asyncrun#runner#gnome_tab#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/iterm.vim", "target": "function:autoload/asyncrun/runner/iterm.vim:asyncrun#runner#iterm#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/konsole.vim", "target": "function:autoload/asyncrun/runner/konsole.vim:asyncrun#runner#konsole#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/macos.vim", "target": "function:autoload/asyncrun/runner/macos.vim:asyncrun#runner#macos#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/quickui.vim", "target": "function:autoload/asyncrun/runner/quickui.vim:asyncrun#runner#quickui#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/termhelp.vim", "target": "function:autoload/asyncrun/runner/termhelp.vim:asyncrun#runner#termhelp#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/tmux.vim", "target": "function:autoload/asyncrun/runner/tmux.vim:asyncrun#runner#tmux#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/xfce.vim", "target": "function:autoload/asyncrun/runner/xfce.vim:asyncrun#runner#xfce#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/asyncrun/runner/xterm.vim", "target": "function:autoload/asyncrun/runner/xterm.vim:asyncrun#runner#xterm#run", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:autoload/quickmenu.vim", "target": "file:syntax/quickmenu.vim", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:autoload/quickmenu.vim", "target": "file:plugin/task_ui_source.vim", "type": "related", "direction": "forward", "weight": 0.5}
+  ]
+}

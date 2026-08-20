@@ -160,7 +160,7 @@ TODO
 ## 🔧 工具插件
 | 快捷键 | 功能 |
 |--------|------|
-| `F9` | 切换 Tagbar |
+| `F12` | 切换 Tagbar（键位可配置，见下文） |
 | `Alt+e` | choosewin 窗口选择 |
 | `Alt+=` | 展开选区 |
 | `Alt+-` | 缩小选区 |
@@ -184,6 +184,46 @@ TODO
 | `Alt+P` | LeaderF 标签列表 |
 | `Alt+n` | LeaderF Buffer 列表 |
 | `Alt+m` | LeaderF Tag 列表 |
+
+---
+
+## 🏗️ 编译/运行
+| 快捷键 | 功能 |
+|--------|------|
+| `F9` | 编译 C/C++ 当前文件（gcc -Wall -O2，键位可配置） |
+| `F5` | 运行当前文件（按文件类型选择解释器） |
+| `F7` | 编译项目（make） |
+| `F8` | 运行项目（make run） |
+| `F6` | 测试项目（make test） |
+| `F4` | 更新 CMake（cmake .） |
+| `F2` | 项目内搜索光标下单词（rg/grep/findstr） |
+| `F10` | 打开/关闭 Quickfix 窗口 |
+
+---
+
+## ⚙️ 可配置项与环境变量
+
+以下配置可在 `~/.vimrc` 中 `source ~/.vim/vim-init/init.vim` 之前设置：
+
+| 配置项 | 默认值 | 说明 |
+|--------|--------|------|
+| `g:keymap_compile` | `<F9>` | 编译 C/C++ 文件的键位 |
+| `g:tagbar_toggle_key` | `<F12>` | 切换 Tagbar 的键位（默认避开 F9 编译） |
+| `$JAVA_HOME` | 未设置 | coc.nvim Java LSP 使用的 JDK 路径；未设置时使用 coc-java 自带 JDK |
+| `$PYTHON` | 未设置 | F5 运行 Python 文件时使用的解释器；未设置时依次尝试 `python3`、`python` |
+
+示例：
+
+```vim
+" 在 ~/.vimrc 中 source init.vim 之前设置
+let g:keymap_compile = '<F12>'
+let g:tagbar_toggle_key = '<F9>'
+let $JAVA_HOME = '/usr/lib/jvm/java-21-openjdk'
+let $PYTHON = 'python3.12'
+source ~/.vim/vim-init/init.vim
+```
+
+注意：若把 `g:tagbar_toggle_key` 改回 `<F9>`，请同时把 `g:keymap_compile` 换成其他键位，避免两个映射互相覆盖。
 
 ---
 

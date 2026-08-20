@@ -1,0 +1,406 @@
+{
+  "scriptCompleted": true,
+  "contentDigest": "23b6f8156d65e6ea4cb1d891fe6d5d7634688b467f9f752a33afc050c4c47d72",
+  "files": [
+    {
+      "path": ".ua/.understandignore",
+      "language": "unknown",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".ua/config.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 190,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "autoload/asyncrun/compat.vim",
+      "language": "vim",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/info.vim",
+      "language": "vim",
+      "sizeLines": 229,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/locator.vim",
+      "language": "vim",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/macos.vim",
+      "language": "vim",
+      "sizeLines": 294,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/capture.vim",
+      "language": "vim",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/echo.vim",
+      "language": "vim",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/shebang.vim",
+      "language": "vim",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/external.vim",
+      "language": "vim",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/floaterm.vim",
+      "language": "vim",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/floaterm_reuse.vim",
+      "language": "vim",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/gnome.vim",
+      "language": "vim",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/gnome_tab.vim",
+      "language": "vim",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/iterm.vim",
+      "language": "vim",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/konsole.vim",
+      "language": "vim",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/macos.vim",
+      "language": "vim",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/quickui.vim",
+      "language": "vim",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/termhelp.vim",
+      "language": "vim",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/tmux.vim",
+      "language": "vim",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/xfce.vim",
+      "language": "vim",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/xterm.vim",
+      "language": "vim",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/utils.vim",
+      "language": "vim",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/plug.vim",
+      "language": "vim",
+      "sizeLines": 2859,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/quickmenu.vim",
+      "language": "vim",
+      "sizeLines": 832,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/desert.vim",
+      "language": "vim",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/desert256.vim",
+      "language": "vim",
+      "sizeLines": 338,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/dracula.vim",
+      "language": "vim",
+      "sizeLines": 178,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/eclipse2.vim",
+      "language": "vim",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/gruvbox.vim",
+      "language": "vim",
+      "sizeLines": 1239,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/monokai.vim",
+      "language": "vim",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/oceanblack256.vim",
+      "language": "vim",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/papercol.vim",
+      "language": "vim",
+      "sizeLines": 2182,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/paradox.vim",
+      "language": "vim",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/seoul256-light.vim",
+      "language": "vim",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/seoul256.vim",
+      "language": "vim",
+      "sizeLines": 341,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/solarized.vim",
+      "language": "vim",
+      "sizeLines": 1117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/sublime.vim",
+      "language": "vim",
+      "sizeLines": 566,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init.vim",
+      "language": "vim",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-basic.vim",
+      "language": "vim",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-config.vim",
+      "language": "vim",
+      "sizeLines": 186,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-keymaps.vim",
+      "language": "vim",
+      "sizeLines": 359,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-plugins.vim",
+      "language": "vim",
+      "sizeLines": 779,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-style.vim",
+      "language": "vim",
+      "sizeLines": 291,
+      "fileCategory": "code"
+    },
+    {
+      "path": "init/init-tabsize.vim",
+      "language": "vim",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/argtextobj.vim",
+      "language": "vim",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/asyncrun.vim",
+      "language": "vim",
+      "sizeLines": 2523,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/asynctasks.vim",
+      "language": "vim",
+      "sizeLines": 2606,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/commentary.vim",
+      "language": "vim",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/indent-object.vim",
+      "language": "vim",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/script_load.vim",
+      "language": "vim",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/task_ui_source.vim",
+      "language": "vim",
+      "sizeLines": 281,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/txt.vim",
+      "language": "vim",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "plugin/unimpaired.vim",
+      "language": "vim",
+      "sizeLines": 533,
+      "fileCategory": "code"
+    },
+    {
+      "path": "syntax/quickmenu.vim",
+      "language": "vim",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/CustomKeyMap.ckm",
+      "language": "ckm",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/CustomSample.tkm",
+      "language": "tkm",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/flake8.conf",
+      "language": "conf",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/pylint.conf",
+      "language": "conf",
+      "sizeLines": 407,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/securecrt.key",
+      "language": "key",
+      "sizeLines": 365,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/splint.conf",
+      "language": "conf",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/conf/xshell.xcs",
+      "language": "xcs",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 63,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "moderate",
+  "stats": {
+    "filesScanned": 63,
+    "byCategory": {
+      "code": 61,
+      "config": 1,
+      "docs": 1
+    },
+    "byLanguage": {
+      "unknown": 1,
+      "json": 1,
+      "markdown": 1,
+      "vim": 53,
+      "ckm": 1,
+      "tkm": 1,
+      "conf": 3,
+      "key": 1,
+      "xcs": 1
+    }
+  }
+}

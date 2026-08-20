@@ -1,0 +1,183 @@
+{
+  "batchIndex": 1,
+  "files": [
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 190,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "autoload/asyncrun/compat.vim",
+      "language": "vim",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/info.vim",
+      "language": "vim",
+      "sizeLines": 229,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/locator.vim",
+      "language": "vim",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/macos.vim",
+      "language": "vim",
+      "sizeLines": 294,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/capture.vim",
+      "language": "vim",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/echo.vim",
+      "language": "vim",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/program/shebang.vim",
+      "language": "vim",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/external.vim",
+      "language": "vim",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/floaterm.vim",
+      "language": "vim",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/floaterm_reuse.vim",
+      "language": "vim",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/gnome.vim",
+      "language": "vim",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/gnome_tab.vim",
+      "language": "vim",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/iterm.vim",
+      "language": "vim",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/konsole.vim",
+      "language": "vim",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/macos.vim",
+      "language": "vim",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/quickui.vim",
+      "language": "vim",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/termhelp.vim",
+      "language": "vim",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/tmux.vim",
+      "language": "vim",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/xfce.vim",
+      "language": "vim",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/runner/xterm.vim",
+      "language": "vim",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/asyncrun/utils.vim",
+      "language": "vim",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/plug.vim",
+      "language": "vim",
+      "sizeLines": 2859,
+      "fileCategory": "code"
+    },
+    {
+      "path": "autoload/quickmenu.vim",
+      "language": "vim",
+      "sizeLines": 832,
+      "fileCategory": "code"
+    },
+    {
+      "path": "colors/desert.vim",
+      "language": "vim",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "README.md": [],
+    "autoload/asyncrun/compat.vim": [],
+    "autoload/asyncrun/info.vim": [],
+    "autoload/asyncrun/locator.vim": [],
+    "autoload/asyncrun/macos.vim": [],
+    "autoload/asyncrun/program/capture.vim": [],
+    "autoload/asyncrun/program/echo.vim": [],
+    "autoload/asyncrun/program/shebang.vim": [],
+    "autoload/asyncrun/runner/external.vim": [],
+    "autoload/asyncrun/runner/floaterm.vim": [],
+    "autoload/asyncrun/runner/floaterm_reuse.vim": [],
+    "autoload/asyncrun/runner/gnome.vim": [],
+    "autoload/asyncrun/runner/gnome_tab.vim": [],
+    "autoload/asyncrun/runner/iterm.vim": [],
+    "autoload/asyncrun/runner/konsole.vim": [],
+    "autoload/asyncrun/runner/macos.vim": [],
+    "autoload/asyncrun/runner/quickui.vim": [],
+    "autoload/asyncrun/runner/termhelp.vim": [],
+    "autoload/asyncrun/runner/tmux.vim": [],
+    "autoload/asyncrun/runner/xfce.vim": [],
+    "autoload/asyncrun/runner/xterm.vim": [],
+    "autoload/asyncrun/utils.vim": [],
+    "autoload/plug.vim": [],
+    "autoload/quickmenu.vim": [],
+    "colors/desert.vim": []
+  },
+  "neighborMap": {}
+}

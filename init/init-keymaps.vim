@@ -263,8 +263,11 @@ let g:asyncrun_bell = 1
 " 设置 F10 打开/关闭 Quickfix 窗口
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
-" F9 编译 C/C++ 文件
-nnoremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+" F9 编译 C/C++ 文件（键位可用 g:keymap_compile 覆盖，例如在 ~/.vimrc 中
+" source init.vim 之前设置：let g:keymap_compile = '<F12>'）
+let g:keymap_compile = get(g:, 'keymap_compile', '<F9>')
+execute 'nnoremap <silent> ' . g:keymap_compile .
+			\ ' :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>'
 
 " F5 运行文件
 nnoremap <silent> <F5> :call ExecuteFile()<cr>
@@ -299,7 +302,12 @@ function! ExecuteFile()
 		let cmd = '"$(VIM_FILEDIR)/$(VIM_FILENOEXT)"'
 	elseif &ft == 'python'
 		let $PYTHONUNBUFFERED=1 " 关闭 python 缓存，实时看到输出
-		let cmd = 'python "$(VIM_FILEPATH)"'
+		" 解释器优先级：$PYTHON 环境变量 > python3 > python
+		let l:python = $PYTHON
+		if l:python ==# ''
+			let l:python = executable('python3') ? 'python3' : 'python'
+		endif
+		let cmd = l:python . ' "$(VIM_FILEPATH)"'
 	elseif &ft == 'javascript'
 		let cmd = 'node "$(VIM_FILEPATH)"'
 	elseif &ft == 'perl'
@@ -355,5 +363,4 @@ else
 				\ --include='*.js' --include='*.vim'
 				\ '<root>' <cr>
 endif
-
 

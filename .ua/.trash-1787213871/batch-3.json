@@ -1,0 +1,168 @@
+{
+  "nodes": [
+    {
+      "id": "file:plugin/task_ui_source.vim",
+      "type": "file",
+      "name": "task_ui_source.vim",
+      "filePath": "plugin/task_ui_source.vim",
+      "summary": "asynctasks 的任务列表数据源：把任务列表接入 leaderf/fzf/clap 等模糊查找器，支持预览、过滤与执行回调。",
+      "tags": ["asynctasks", "fuzzy-finder", "plugin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:plugin/task_ui_source.vim:fzf_task",
+      "type": "function",
+      "name": "fzf_task",
+      "filePath": "plugin/task_ui_source.vim",
+      "lineRange": [97, 123],
+      "summary": "用 fzf 展示任务列表并处理选择结果。",
+      "tags": ["asynctasks", "fzf"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:plugin/task_ui_source.vim:g:clap_provider_tasks.source",
+      "type": "function",
+      "name": "clap_provider_tasks.source",
+      "filePath": "plugin/task_ui_source.vim",
+      "lineRange": [123, 133],
+      "summary": "clap 插件任务列表数据源：返回任务源文本供 clap 展示。",
+      "tags": ["asynctasks", "clap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:plugin/task_ui_source.vim:g:clap_provider_tasks.sink",
+      "type": "function",
+      "name": "clap_provider_tasks.sink",
+      "filePath": "plugin/task_ui_source.vim",
+      "lineRange": [133, 144],
+      "summary": "clap 任务列表选中回调：解析所选任务并启动执行。",
+      "tags": ["asynctasks", "clap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:plugin/task_ui_source.vim:fuzzy_finder",
+      "type": "function",
+      "name": "fuzzy_finder",
+      "filePath": "plugin/task_ui_source.vim",
+      "lineRange": [239, 267],
+      "summary": "自动选择可用的模糊查找器（fzf/leaderf/quickui）并启动任务选择界面。",
+      "tags": ["asynctasks", "fuzzy-finder"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:plugin/txt.vim",
+      "type": "file",
+      "name": "txt.vim",
+      "filePath": "plugin/txt.vim",
+      "summary": "通用 .txt 语法高亮脚本：为日志、changelog、readme 等无类型文本提供数字、运算符、TODO、版本标签等高亮。",
+      "tags": ["syntax", "plugin", "text"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:plugin/unimpaired.vim",
+      "type": "file",
+      "name": "unimpaired.vim",
+      "filePath": "plugin/unimpaired.vim",
+      "summary": "Tim Pope 的 unimpaired 插件：成对快捷映射（如 [q ]q、[a ]a、[< ]>），切换 buffer、quickfix、选项等。",
+      "tags": ["plugin", "keymaps", "bracket-mappings"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:plugin/unimpaired.vim:UnimpairedMapTransform",
+      "type": "function",
+      "name": "UnimpairedMapTransform",
+      "filePath": "plugin/unimpaired.vim",
+      "lineRange": [506, 533],
+      "summary": "根据映射算法与键生成对应的成对快捷映射。",
+      "tags": ["plugin", "keymaps"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:syntax/quickmenu.vim",
+      "type": "file",
+      "name": "quickmenu.vim",
+      "filePath": "syntax/quickmenu.vim",
+      "summary": "quickmenu 菜单窗口的语法高亮定义，美化菜单条目的显示。",
+      "tags": ["syntax", "quickmenu", "ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tools/conf/CustomKeyMap.ckm",
+      "type": "config",
+      "name": "CustomKeyMap.ckm",
+      "filePath": "tools/conf/CustomKeyMap.ckm",
+      "summary": "SecureCRT 自定义键位映射：Alt+数字键快速切换会话标签。",
+      "tags": ["configuration", "securecrt", "keymaps"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tools/conf/CustomSample.tkm",
+      "type": "config",
+      "name": "CustomSample.tkm",
+      "filePath": "tools/conf/CustomSample.tkm",
+      "summary": "SecureCRT 功能键码样本：F1-F12 对应的终端转义序列定义。",
+      "tags": ["configuration", "securecrt", "keycodes"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tools/conf/flake8.conf",
+      "type": "config",
+      "name": "flake8.conf",
+      "filePath": "tools/conf/flake8.conf",
+      "summary": "flake8 配置：忽略的检查规则（W/E 系列）与最大行长 160。",
+      "tags": ["configuration", "lint", "python"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tools/conf/pylint.conf",
+      "type": "config",
+      "name": "pylint.conf",
+      "filePath": "tools/conf/pylint.conf",
+      "summary": "pylint 主配置文件：覆盖 MASTER、错误、格式等各节选项，用于命令行静态检查。",
+      "tags": ["configuration", "lint", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:tools/conf/securecrt.key",
+      "type": "config",
+      "name": "securecrt.key",
+      "filePath": "tools/conf/securecrt.key",
+      "summary": "SecureCRT 按键映射文件：把标准 VT 键码映射为正确的终端转义序列（方向键、功能键等）。",
+      "tags": ["configuration", "securecrt", "keymaps"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tools/conf/splint.conf",
+      "type": "config",
+      "name": "splint.conf",
+      "filePath": "tools/conf/splint.conf",
+      "summary": "splint C 静态分析工具参数：include 路径、宏定义与平台开关。",
+      "tags": ["configuration", "lint", "c"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tools/conf/xshell.xcs",
+      "type": "config",
+      "name": "xshell.xcs",
+      "filePath": "tools/conf/xshell.xcs",
+      "summary": "Xshell 配色方案定义文件：多套终端颜色方案（3024 Day 等）的 RGB 色值。",
+      "tags": ["configuration", "xshell", "colorscheme"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {"source": "file:plugin/task_ui_source.vim", "target": "function:plugin/task_ui_source.vim:fzf_task", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:plugin/task_ui_source.vim", "target": "function:plugin/task_ui_source.vim:g:clap_provider_tasks.source", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:plugin/task_ui_source.vim", "target": "function:plugin/task_ui_source.vim:g:clap_provider_tasks.sink", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:plugin/task_ui_source.vim", "target": "function:plugin/task_ui_source.vim:fuzzy_finder", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:plugin/unimpaired.vim", "target": "function:plugin/unimpaired.vim:UnimpairedMapTransform", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:syntax/quickmenu.vim", "target": "file:autoload/quickmenu.vim", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "config:tools/conf/CustomKeyMap.ckm", "target": "file:init/init-config.vim", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "config:tools/conf/CustomSample.tkm", "target": "file:init/init-config.vim", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "config:tools/conf/securecrt.key", "target": "file:init/init-config.vim", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "config:tools/conf/xshell.xcs", "target": "file:init/init-config.vim", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "config:tools/conf/flake8.conf", "target": "file:init/init-config.vim", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "config:tools/conf/pylint.conf", "target": "file:init/init-config.vim", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "config:tools/conf/splint.conf", "target": "file:init/init-config.vim", "type": "related", "direction": "forward", "weight": 0.5}
+  ]
+}

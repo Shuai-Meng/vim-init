@@ -1,0 +1,29 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 0,
+  "filesSkipped": [
+    "plugin/task_ui_source.vim",
+    "plugin/txt.vim",
+    "plugin/unimpaired.vim",
+    "syntax/quickmenu.vim",
+    "tools/conf/CustomKeyMap.ckm",
+    "tools/conf/CustomSample.tkm",
+    "tools/conf/flake8.conf",
+    "tools/conf/pylint.conf",
+    "tools/conf/securecrt.key",
+    "tools/conf/splint.conf",
+    "tools/conf/xshell.xcs"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 0,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": []
+}

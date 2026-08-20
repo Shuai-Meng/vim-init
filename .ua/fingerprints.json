@@ -1,0 +1,617 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "d8fa794a1d51383d338b26dfb879940108b0fa17",
+  "generatedAt": "2026-08-20T08:17:47.303Z",
+  "files": {
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "e6720d22d5b28010676fe2bf4ecb6c013b7ab188cd41d3ca9e477e65bf6aaeec",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 191,
+      "hasStructuralAnalysis": true
+    },
+    "autoload/asyncrun/compat.vim": {
+      "filePath": "autoload/asyncrun/compat.vim",
+      "contentHash": "f28cb9efef9db756f6c73a73d841e74ea45ba6413d2db09abb6d1187374de796",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 89,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/info.vim": {
+      "filePath": "autoload/asyncrun/info.vim",
+      "contentHash": "6b23129c3e0b1fb275a5a473ea1ea6ac082ad7042f59e1ac9f3a38b8770ffe3b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 230,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/locator.vim": {
+      "filePath": "autoload/asyncrun/locator.vim",
+      "contentHash": "dc6aff83b6da1f57ab63304d726aae1d38cdead384367bbc15c5eda16a536f69",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 165,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/macos.vim": {
+      "filePath": "autoload/asyncrun/macos.vim",
+      "contentHash": "4eb7f05cc044ec22ca940793a66869a6da04671b69c939f46c6bd32ed276b437",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 295,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/program/capture.vim": {
+      "filePath": "autoload/asyncrun/program/capture.vim",
+      "contentHash": "0ceea6a30bd4ae424af53801f99b9437209993f9336e297dc4681da7ea22ccb2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 64,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/program/echo.vim": {
+      "filePath": "autoload/asyncrun/program/echo.vim",
+      "contentHash": "60d6e1c1816c20850a42e65de79a7349c8251376c781c32ef262203d15ee8c31",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/program/shebang.vim": {
+      "filePath": "autoload/asyncrun/program/shebang.vim",
+      "contentHash": "9a0e27a394058d20d671710286a3746a97cae85f7a7419930da13b28af47d25b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 43,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/external.vim": {
+      "filePath": "autoload/asyncrun/runner/external.vim",
+      "contentHash": "36b35c93b386f80b5dde36d89546b3529bb5107ef8d93773fd88be2aca0a9d50",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/floaterm.vim": {
+      "filePath": "autoload/asyncrun/runner/floaterm.vim",
+      "contentHash": "5f2c77ff77a838696dcbd2f2207ed647fb0bb0412364b650416d1d5e6b37bebf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 68,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/floaterm_reuse.vim": {
+      "filePath": "autoload/asyncrun/runner/floaterm_reuse.vim",
+      "contentHash": "4ea5637d666e2ce243f56999410b63e66f9b38356048f98097fedf1f1669a412",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 28,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/gnome.vim": {
+      "filePath": "autoload/asyncrun/runner/gnome.vim",
+      "contentHash": "b9091652b2ec4b6d97ac7125d33efbabfd58fe6a4b63a00999589129e7e1b251",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/gnome_tab.vim": {
+      "filePath": "autoload/asyncrun/runner/gnome_tab.vim",
+      "contentHash": "72da9f42c13f037f17efe319e2ef2b518fe78088123115226143c380056c5814",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 28,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/iterm.vim": {
+      "filePath": "autoload/asyncrun/runner/iterm.vim",
+      "contentHash": "bb799269deb4c9b0f8e1dec73507d384ccdde6ddf9cb6f6dd02ce31106dad243",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/konsole.vim": {
+      "filePath": "autoload/asyncrun/runner/konsole.vim",
+      "contentHash": "4859b24a3d5b3bb36682ad322a54bfe5e0940ae2578e831a4cb794d22d683f61",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/macos.vim": {
+      "filePath": "autoload/asyncrun/runner/macos.vim",
+      "contentHash": "5f2e496c265e4ffc7b4e9be37ff8552f82b167cf23c28a8f00bbfdeaf7953e18",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/quickui.vim": {
+      "filePath": "autoload/asyncrun/runner/quickui.vim",
+      "contentHash": "8d39e983503081428e7461800e7c4d1b2d91d6abc2067cedf257712bf9a0dff5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 31,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/termhelp.vim": {
+      "filePath": "autoload/asyncrun/runner/termhelp.vim",
+      "contentHash": "d48e0772deff6582d1deb2a10e91d40dfc33b42786cc14f31860711375424fc9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/tmux.vim": {
+      "filePath": "autoload/asyncrun/runner/tmux.vim",
+      "contentHash": "185a253a11cf5528125f6ad7a8b2f7bddc4379c901c0c47b3a31a1d67043fa24",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/xfce.vim": {
+      "filePath": "autoload/asyncrun/runner/xfce.vim",
+      "contentHash": "118c0da222c5dfa1661f5edbf909ef3bd146f0e0523122908fd5039a2d7751ab",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/runner/xterm.vim": {
+      "filePath": "autoload/asyncrun/runner/xterm.vim",
+      "contentHash": "fb87b04349a3dba27b124c0fd08ae9b6dc18861f3440568051185d8ebc4bc4bf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/asyncrun/utils.vim": {
+      "filePath": "autoload/asyncrun/utils.vim",
+      "contentHash": "9a164fa682c2f53fc7ec156d183c9fc39bd181a8a8e470ecda09f5536f4ac6c2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 155,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/plug.vim": {
+      "filePath": "autoload/plug.vim",
+      "contentHash": "66d7f70cd8d018c3c2d08a09d346781e324460d06941f9e5597fcc3db6223d59",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2860,
+      "hasStructuralAnalysis": false
+    },
+    "autoload/quickmenu.vim": {
+      "filePath": "autoload/quickmenu.vim",
+      "contentHash": "89680297080e6c2e5cc045519f6339f35198ecb132c0ba4fd9e811a80cf15dc4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 833,
+      "hasStructuralAnalysis": false
+    },
+    "colors/desert.vim": {
+      "filePath": "colors/desert.vim",
+      "contentHash": "076f2d3088eefc4a455c9aa5e1dba07181032fcfe155e23fbea80f20dc69ac15",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 106,
+      "hasStructuralAnalysis": false
+    },
+    "colors/desert256.vim": {
+      "filePath": "colors/desert256.vim",
+      "contentHash": "6305e5f5f58b753c87018eceb8fbbc539b8500b6e4611ed8db5e762657f5f043",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 339,
+      "hasStructuralAnalysis": false
+    },
+    "colors/dracula.vim": {
+      "filePath": "colors/dracula.vim",
+      "contentHash": "bf57be81b7d2b71ad24bd32162c7e4d5b5fb1ba8d2d513b18412aa6adb4687b0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 179,
+      "hasStructuralAnalysis": false
+    },
+    "colors/eclipse2.vim": {
+      "filePath": "colors/eclipse2.vim",
+      "contentHash": "dde77dcba7a27c8a8fc48b7a696f8fcd9e17be9e72b2f6af4687130e55d3eb33",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 94,
+      "hasStructuralAnalysis": false
+    },
+    "colors/gruvbox.vim": {
+      "filePath": "colors/gruvbox.vim",
+      "contentHash": "cacf52ce4f616a600e4bcb005e228b06224314ecfd028b2fba5b4d924f858632",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1240,
+      "hasStructuralAnalysis": false
+    },
+    "colors/monokai.vim": {
+      "filePath": "colors/monokai.vim",
+      "contentHash": "bccfe624c198d08ccc943ecd9fd713e2d361013e416c540f9807b7f0e685edfa",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 110,
+      "hasStructuralAnalysis": false
+    },
+    "colors/oceanblack256.vim": {
+      "filePath": "colors/oceanblack256.vim",
+      "contentHash": "ac45b95ee6f5b6074eb67a2cddf4a0a589e6d5fb704e5dd9ad5664bb4703221c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 126,
+      "hasStructuralAnalysis": false
+    },
+    "colors/papercol.vim": {
+      "filePath": "colors/papercol.vim",
+      "contentHash": "c71f7a37437623aa85613eb85bb2938f9b2e516d48ec6ecc4a90793051328c6e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2183,
+      "hasStructuralAnalysis": false
+    },
+    "colors/paradox.vim": {
+      "filePath": "colors/paradox.vim",
+      "contentHash": "c2fbe775a51c19d305ff95614061db82a9512a475e8158e0e10bdbe6f8ff2d37",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 241,
+      "hasStructuralAnalysis": false
+    },
+    "colors/seoul256-light.vim": {
+      "filePath": "colors/seoul256-light.vim",
+      "contentHash": "24318d24f98dfba7c0e7311eba02592a57012df90bddb3780c5210553905a71d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 79,
+      "hasStructuralAnalysis": false
+    },
+    "colors/seoul256.vim": {
+      "filePath": "colors/seoul256.vim",
+      "contentHash": "164843227bfaaab8703d107f91b859a00cf377390a018b5ef08a6e9c8a783776",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 342,
+      "hasStructuralAnalysis": false
+    },
+    "colors/solarized.vim": {
+      "filePath": "colors/solarized.vim",
+      "contentHash": "8b6360751f48206bf4b0a44dd2feb9c48af656f2662e5bf62b47ebb87c277004",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1118,
+      "hasStructuralAnalysis": false
+    },
+    "colors/sublime.vim": {
+      "filePath": "colors/sublime.vim",
+      "contentHash": "f0c2a2cdae7ef9f50c85c5b7db2d7eed7a8cbcd02307bc89bfb8cf926b334200",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 567,
+      "hasStructuralAnalysis": false
+    },
+    "init.vim": {
+      "filePath": "init.vim",
+      "contentHash": "36cf07e652343488e9825d9657c7bbcbbf440621c749f618aaadcaec2aa208c0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 54,
+      "hasStructuralAnalysis": false
+    },
+    "init/init-basic.vim": {
+      "filePath": "init/init-basic.vim",
+      "contentHash": "0dc532c5432c9663ff6cce62cb8fa2039be95a5c432cc81dedb2449eafaf6bc8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 206,
+      "hasStructuralAnalysis": false
+    },
+    "init/init-config.vim": {
+      "filePath": "init/init-config.vim",
+      "contentHash": "5f0d730690948467fdefd03abed40d8afc2507b757835573a0cfe7dc9aae625e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 187,
+      "hasStructuralAnalysis": false
+    },
+    "init/init-keymaps.vim": {
+      "filePath": "init/init-keymaps.vim",
+      "contentHash": "1c724fd82064288da1c1c3204f978b967366ae58adc14dc3a72a5f5bdd7db75e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 360,
+      "hasStructuralAnalysis": false
+    },
+    "init/init-plugins.vim": {
+      "filePath": "init/init-plugins.vim",
+      "contentHash": "bbc5e6cf3723b351186568f72697b9656cf71151ff7b2aaec6cb7ee637b9bfc4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 780,
+      "hasStructuralAnalysis": false
+    },
+    "init/init-style.vim": {
+      "filePath": "init/init-style.vim",
+      "contentHash": "f4cb9f32ca79be845c3ba13c2d5f6cc72f6acc7e72090890adb45d5d4e2b4377",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 292,
+      "hasStructuralAnalysis": false
+    },
+    "init/init-tabsize.vim": {
+      "filePath": "init/init-tabsize.vim",
+      "contentHash": "c993843f9b366662546ccd78173a48e4c75921fe4efc4b0feaf9b854242b27a6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 37,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/argtextobj.vim": {
+      "filePath": "plugin/argtextobj.vim",
+      "contentHash": "833fd1e20f6c2bfd41739412cce86c1f454b68c018c5dd2947ff70439806434d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 421,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/asyncrun.vim": {
+      "filePath": "plugin/asyncrun.vim",
+      "contentHash": "f5d0459b1bac22d33b6667707a796b82cc8c2b394824eadb88313cf8f208285d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2524,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/asynctasks.vim": {
+      "filePath": "plugin/asynctasks.vim",
+      "contentHash": "5034edf6e588293c63903528e92814651a6a9e8c5558b3cb6a1e1d5146d1e02e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2607,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/commentary.vim": {
+      "filePath": "plugin/commentary.vim",
+      "contentHash": "3cdfa93397d957edf3be53edda7beb0715a0d80bbd71f3f79059cf902d87165b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 123,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/indent-object.vim": {
+      "filePath": "plugin/indent-object.vim",
+      "contentHash": "f3af17a6a23f99deffd08e8d8c19b2298b7e9742a42df46e1b0001e85916c9c9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 235,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/script_load.vim": {
+      "filePath": "plugin/script_load.vim",
+      "contentHash": "7db0f272105cfbba2b73eab052ab7ec0b7e7c187fb5e0fe235ce8151a3327ff9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 150,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/task_ui_source.vim": {
+      "filePath": "plugin/task_ui_source.vim",
+      "contentHash": "bf18d54175a05d5f4f7bb7732057f9820ccdf95e4c4723c305a0f8e07b608454",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 282,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/txt.vim": {
+      "filePath": "plugin/txt.vim",
+      "contentHash": "33c748bca81ca9e150429e29f1a64495f439f872a839f7c11b399446a068c84c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 116,
+      "hasStructuralAnalysis": false
+    },
+    "plugin/unimpaired.vim": {
+      "filePath": "plugin/unimpaired.vim",
+      "contentHash": "f51000dd4c12f18f2328ae7c0b7d510492933eb56931af462a4df399599bb78a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 534,
+      "hasStructuralAnalysis": false
+    },
+    "syntax/quickmenu.vim": {
+      "filePath": "syntax/quickmenu.vim",
+      "contentHash": "4f060d0595634dda3c2a7205b58257a45d5f9b1d7aa51559ed6925de194b4734",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 70,
+      "hasStructuralAnalysis": false
+    },
+    "tools/conf/CustomKeyMap.ckm": {
+      "filePath": "tools/conf/CustomKeyMap.ckm",
+      "contentHash": "14a008a6d851645f8c6a7ea18ca849c4a9af0722bfd48343a88f18b8b45bd34d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 145,
+      "hasStructuralAnalysis": false
+    },
+    "tools/conf/CustomSample.tkm": {
+      "filePath": "tools/conf/CustomSample.tkm",
+      "contentHash": "5fa920e4a6e54492aadbf2f229b8280552bd3b9ab28e1ad46cac42eee4a8f281",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": false
+    },
+    "tools/conf/flake8.conf": {
+      "filePath": "tools/conf/flake8.conf",
+      "contentHash": "f1e45a8c7cca3997e9d0a898aaa10a12e4ba9c697554a743d2b3d0fc945afbf0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 5,
+      "hasStructuralAnalysis": false
+    },
+    "tools/conf/pylint.conf": {
+      "filePath": "tools/conf/pylint.conf",
+      "contentHash": "dd988f82582011b63e803e0759c6f5685237bb7a681389a93358bcd92b2c822c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 408,
+      "hasStructuralAnalysis": false
+    },
+    "tools/conf/securecrt.key": {
+      "filePath": "tools/conf/securecrt.key",
+      "contentHash": "0abaa5e2f21605fc09e5be686b185f2e3baca84513db4c45c6ac11106d274226",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 366,
+      "hasStructuralAnalysis": false
+    },
+    "tools/conf/splint.conf": {
+      "filePath": "tools/conf/splint.conf",
+      "contentHash": "3d83cb72202d0ebb019d9785f7ca482b233077cb4dac1b858a3f12eeec8219af",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": false
+    },
+    "tools/conf/xshell.xcs": {
+      "filePath": "tools/conf/xshell.xcs",
+      "contentHash": "4a549efa8893a166d3e085637ad2a86ada10ae1ad3d96dfd70bd361f8b9c117c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 150,
+      "hasStructuralAnalysis": false
+    }
+  }
+}

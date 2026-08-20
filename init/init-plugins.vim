@@ -289,7 +289,14 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'tags') >= 0
 	Plug 'majutsushi/tagbar'
-	nmap <F9> :TagbarToggle<CR>
+
+	" Tagbar 切换键默认为 <F12>，避免与 init-keymaps.vim 的 F9 编译冲突。
+	" 自定义：在 ~/.vimrc 中 source init.vim 之前设置
+	"   let g:tagbar_toggle_key = '<F9>'
+	" （若改回 F9，请同时把 g:keymap_compile 换成其他键位）
+	let g:tagbar_toggle_key = get(g:, 'tagbar_toggle_key', '<F12>')
+	execute 'nmap <silent> ' . g:tagbar_toggle_key . ' :TagbarToggle<CR>'
+
 	let g:tagbar_autofocus = 1
 	let g:tagbar_width = 30
 endif
@@ -363,13 +370,15 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline_right_alt_sep = ''
 	let g:airline_powerline_fonts = 0
 	let g:airline_exclude_preview = 1
-	let g:airline_section_b = '%n'
 	let g:airline_theme='deus'
-	let g:airline#extensions#branch#enabled = 0
-	let g:airline#extensions#syntastic#enabled = 0
-	let g:airline#extensions#fugitiveline#enabled = 0
-	let g:airline#extensions#csv#enabled = 0
-	let g:airline#extensions#vimagit#enabled = 0
+
+	" 极简状态栏：只保留模式、git 分支（含 hunks）与诊断错误/警告计数。
+	" b 区保持 airline 默认（分支扩展默认开启），无需再设置 section_b 或
+	" airline#extensions#branch#enabled。
+	let g:airline_section_c = ''
+	let g:airline_section_x = ''
+	let g:airline_section_y = ''
+	let g:airline_section_z = ''
 endif
 
 
@@ -399,6 +408,9 @@ if index(g:bundle_group, 'nerdtree') >= 0
 	autocmd VimEnter * NERDTree
 	autocmd VimEnter * wincmd p             " 光标回到编辑窗口
 
+	" 每个标签页都自动打开 NERDTree（镜像共享）
+	autocmd TabEnter * if !exists('t:NERDTreeBufName') | NERDTreeMirror | wincmd p | endif
+
 	" 当只剩 NERDTree 窗口时自动关闭 vim
 	autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -411,8 +423,24 @@ if index(g:bundle_group, 'nerdtree') >= 0
 	endfunction
 
 	function! SyncTree()
-	  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-	    NERDTreeFind
+	  " 安全检查：确保在有效的窗口和缓冲区中
+	  if !bufexists('%') || winnr() == 0
+	    return
+	  endif
+	  " 跳过非文件缓冲区（如 jdt://、term://、fugitive:// 等）
+	  if &buftype != '' || !&modifiable
+	    return
+	  endif
+	  " 跳过特殊路径（JDK源码、jar包内文件等）
+	  if expand('%') =~# '^\(jdt\|zipfile\|tarfile\)://'
+	    return
+	  endif
+	  " 跳过空缓冲区或未命名缓冲区
+	  if expand('%') ==# '' || expand('%') =~# '^unnamed'
+	    return
+	  endif
+	  if IsNERDTreeOpen() && !&diff
+	    silent! NERDTreeFind
 	    wincmd p
 	  endif
 	endfunction
@@ -524,8 +552,6 @@ endif
 
 "----------------------------------------------------------------------
 " LSP：coc.nvim 智能补全方案
-" vim-lsp 对 jdt:// URI 跳转无原生支持，切换到 coc.nvim
-" coc-java 扩展对 eclipse.jdt.ls 有完整支持（含 JDK/Spring 跳转）
 "----------------------------------------------------------------------
 " 检查 Vim 版本，coc.nvim 需要 9.0.0438+（Vim9 脚本语法要求）
 if index(g:bundle_group, 'lsp') >= 0 && has('patch-9.0.0438')
@@ -552,24 +578,43 @@ if index(g:bundle_group, 'lsp') >= 0 && has('patch-9.0.0438')
 		\ ]
 	
 	" coc.nvim Java LSP 配置
-	" java.jdt.ls.java.home: 用 JDK 21 启动 eclipse.jdt.ls（替代 coc-java 自带的 JDK 23）
-	" runtimes: 告诉 eclipse.jdt.ls 项目编译使用 JDK 21
+	" java.jdt.ls.java.home / runtimes.path 优先使用 $JAVA_HOME 环境变量，
+	" runtime 名称从 $JAVA_HOME/release 自动解析（如 JAVA_VERSION="21.0.4" -> JavaSE-21）。
+	" 未设置 $JAVA_HOME 时跳过该项，让 coc-java 使用其自带的 JDK。
 	" coc-java 自带 lombok.jar，自动添加 -javaagent，无需手动配置 vmargs
-	let g:coc_user_config = {
-		\ 'java.jdt.ls.java.home': $HOME . '/programs/jdk-21.0.4',
-		\ 'java.configuration.runtimes': [
-		\   {
-		\     'name': 'JavaSE-21',
-		\     'path': $HOME . '/programs/jdk-21.0.4',
-		\   },
-		\ ],
-		\ 'java.import.maven.enabled': v:true,
-		\ 'java.import.maven.downloadSources': v:true,
-		\ 'java.references.includeDecompiledSources': v:true,
-		\ 'java.eclipse.downloadSources': v:true,
-		\ 'suggest.noselect': v:false,
-		\ 'suggest.enablePreselect': v:true,
-		\ }
+	let s:java_home = $JAVA_HOME
+	if s:java_home !=# ''
+		let s:java_version = '21'
+		let s:java_release = s:java_home . '/release'
+		if filereadable(s:java_release)
+			let s:java_ver = matchstr(get(readfile(s:java_release), 0, ''),
+						\ 'JAVA_VERSION="\zs[^"]*')
+			let s:java_major = matchstr(s:java_ver, '^\d\+')
+			if s:java_major ==# '1'
+				" JDK 8 的版本号形如 1.8.0_xxx
+				let s:java_major = '1.' . matchstr(s:java_ver, '^1\.\zs\d\+')
+			endif
+			if s:java_major !=# ''
+				let s:java_version = s:java_major
+			endif
+		endif
+		let g:coc_user_config = {
+			\ 'java.jdt.ls.java.home': s:java_home,
+			\ 'java.configuration.runtimes': [
+			\   {
+			\     'name': 'JavaSE-' . s:java_version,
+			\     'path': s:java_home,
+			\   },
+			\ ],
+			\ 'java.import.maven.enabled': v:true,
+			\ 'java.import.maven.downloadSources': v:true,
+			\ 'java.references.includeDecompiledSources': v:true,
+			\ 'java.eclipse.downloadSources': v:true,
+			\ 'suggest.noselect': v:false,
+			\ 'suggest.enablePreselect': v:true,
+			\ 'coc.preferences.jumpCommand': 'tabnew',
+			\ }
+	endif
 	
 	" ---- Tab 补全导航 ----
 	" Tab/S-Tab 在补全菜单中上下导航
@@ -605,10 +650,10 @@ if index(g:bundle_group, 'lsp') >= 0 && has('patch-9.0.0438')
 	inoremap <silent><expr> <c-space> coc#refresh()
 	
 	" ---- 跳转 ----
-	" gd: 跳转到定义（支持 JDK/Spring 类跳转）
-	" gy: 跳转到类型定义
-	" gi: 跳转到实现
-	" gr: 查看所有引用
+	" gd: 跳转到定义（新标签页，由 coc.preferences.jumpCommand 控制）
+	" gy: 跳转到类型定义（新标签页）
+	" gi: 跳转到实现（新标签页）
+	" gr: 查看所有引用（当前窗口）
 	nmap <silent> gd <Plug>(coc-definition)
 	nmap <silent> gy <Plug>(coc-type-definition)
 	nmap <silent> gi <Plug>(coc-implementation)
@@ -644,7 +689,7 @@ endif
 
 
 "----------------------------------------------------------------------
-" echodoc：搭配 YCM/deoplete 在底部显示函数参数
+" echodoc：在底部显示函数参数
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'echodoc') >= 0
 	Plug 'Shougo/echodoc.vim'
@@ -763,90 +808,3 @@ endif
 " 结束插件安装
 "----------------------------------------------------------------------
 call plug#end()
-
-
-
-"----------------------------------------------------------------------
-" YouCompleteMe 默认设置：YCM 需要你另外手动编译安装
-"----------------------------------------------------------------------
-
-" 禁用预览功能：扰乱视听
-let g:ycm_add_preview_to_completeopt = 0
-
-" 禁用诊断功能：我们用前面更好用的 ALE 代替
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
-set completeopt=menu,menuone,noselect
-
-" noremap <c-z> <NOP>
-
-" 两个字符自动触发语义补全
-let g:ycm_semantic_triggers =  {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
-			\ }
-
-
-"----------------------------------------------------------------------
-" Ycm 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
-"----------------------------------------------------------------------
-let g:ycm_filetype_whitelist = { 
-			\ "c":1,
-			\ "cpp":1, 
-			\ "objc":1,
-			\ "objcpp":1,
-			\ "python":1,
-			\ "java":1,
-			\ "javascript":1,
-			\ "coffee":1,
-			\ "vim":1, 
-			\ "go":1,
-			\ "cs":1,
-			\ "lua":1,
-			\ "perl":1,
-			\ "perl6":1,
-			\ "php":1,
-			\ "ruby":1,
-			\ "rust":1,
-			\ "erlang":1,
-			\ "asm":1,
-			\ "nasm":1,
-			\ "masm":1,
-			\ "tasm":1,
-			\ "asm68k":1,
-			\ "asmh8300":1,
-			\ "asciidoc":1,
-			\ "basic":1,
-			\ "vb":1,
-			\ "make":1,
-			\ "cmake":1,
-			\ "html":1,
-			\ "css":1,
-			\ "less":1,
-			\ "json":1,
-			\ "cson":1,
-			\ "typedscript":1,
-			\ "haskell":1,
-			\ "lhaskell":1,
-			\ "lisp":1,
-			\ "scheme":1,
-			\ "sdl":1,
-			\ "sh":1,
-			\ "zsh":1,
-			\ "bash":1,
-			\ "man":1,
-			\ "markdown":1,
-			\ "matlab":1,
-			\ "maxima":1,
-			\ "dosini":1,
-			\ "conf":1,
-			\ "config":1,
-			\ "zimbu":1,
-			\ "ps1":1,
-			\ }
-
-
